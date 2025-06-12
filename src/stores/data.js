@@ -27,7 +27,7 @@ import {
 import styles from '../utils/styles';
 
 // static test filter data & spotlight & new data
-const trackerDataPath = 'data/tracker-test-spotlight-new-data.csv';
+const trackerDataPath = 'data/tracker-test-data-example.csv';
 
 // live data v2: add 'Overview Spotlight' + 'Key Developments Spotlight'
 // const trackerDataPath = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQh27kpYjCRmNoWa4FEpWqLSxLLaqK_hlgqP6wGQLp8Pum7guAYS6i0qt6wIRAPvb5Up6-6wvmTN05s/pub?gid=0&single=true&output=csv';
