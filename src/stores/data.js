@@ -27,13 +27,12 @@ import {
 import styles from '../utils/styles';
 
 // static test filter data & spotlight & new data
-const trackerDataPath = 'data/tracker-test-data-example.csv';
+// const trackerDataPath = 'data/tracker-test-data-example.csv';
 
-// live data v2: add 'Overview Spotlight' + 'Key Developments Spotlight'
+
+// live data v1: add 'Overview Spotlight' + 'Key Developments Spotlight'
 // const trackerDataPath = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQh27kpYjCRmNoWa4FEpWqLSxLLaqK_hlgqP6wGQLp8Pum7guAYS6i0qt6wIRAPvb5Up6-6wvmTN05s/pub?gid=0&single=true&output=csv';
-
-// live data v1
-// const trackerDataPath = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvC1JtWY8a2W4b8DLPfnfb9rmhuHBmWO22TvSXXpk25CZTBU9_8f6YtxM9rmBK2YajII5ltDE6ynGZ/pub?gid=0&single=true&output=csv';
+const trackerDataPath = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbLuIpgqe7OnMxsi2Bme5BPf_sPi7yr1IXOFPMaBDDRxOQs3R6bmCDBqAEPgEUnUb5gBNF7wMS8IgS/pub?gid=111002649&single=true&output=csv'
 
 // ignore
 // const trackerDataPath = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSgtFtB8hLrJ0VcWV9pASEAprK4foQsOHai9gWBNNzm4ZwATV35-gaoLm_7Q0FgGw1mXJ4sOhMDX5HW/pub?gid=0&single=true&output=csv'
