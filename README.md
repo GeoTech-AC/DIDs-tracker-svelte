@@ -2,7 +2,7 @@
 
 > The Central Bank Digital Currency Tracker of the Atlantic Council
 
-This is the official code for the [CBDC Tracker of the Atlantic Council](https://www.atlanticcouncil.org/blogs/econographics/the-rise-of-central-bank-digital-currencies/)..
+This is the official code for the [Digital IDs Tracker of the Atlantic Council](https://www.atlanticcouncil.org/blogs/econographics/the-rise-of-central-bank-digital-currencies/)..
 
 ![Screenshot of the CBDC Tracker](./public/img/screenshot.png)
 
@@ -12,8 +12,8 @@ This is the official code for the [CBDC Tracker of the Atlantic Council](https:/
 Get the repo.
 
 ```bash
-git clone https://github.com/GeoEcon/cbdc-tracker-svelte.git
-cd cbdc-tracker-svelte
+git clone https://github.com/GeoTech-AC/DIDs-tracker-svelte.git
+cd DIDs-tracker-svelte
 ```
 
 Install the dependencies. (You need to have [node and NPM installed](https://nodejs.org/en/).)
