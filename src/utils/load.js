@@ -31,8 +31,8 @@ export const loadTrackerData = async (dataPath) => {
       key_developments_spotlight: d['Key Developments Spotlight'],
       categories: {
         // former version
-        // new_status: curate(d['New Status']),
-        new_status: curate(d['October Status']),
+        new_status: curate(d['Present Status']),
+        // new_status: curate(d['October Status']),
         use_case: curate(d['Use case']),
         technology: curate(d['Underlying technology']),
         architecture: curate(d['Architecture: direct CBDC or hybrid']),
