@@ -1,15 +1,13 @@
 export const statusColors = [
-'#61c3fa',  // Sky Blue (Primary accent)
-  '#70e49d',  // Fresh Mint (Success/Green)
-  '#ffc860',  // Gold (Warm, highlight)
-  '#ec6d51',  // Soft Coral (Alert/Action)
-  '#b59ff7',  // Lavender (Secondary accent)
-  '#f19ebc',  // Pink Rose (Highlight/Secondary)
-  '#7fd7d2',  // Teal (Calm/support)
-  '#a9b5c9',  // Cloudy Blue (Background/neutral)
-  '#536178',  // Deep Slate (Text, chips)
-  '#d1e6fa',  // Pale Sky (Card background)
-  '#373f51',  // Navy Night (Contrast/dark elements)
+'#F98E85',  // Coral Red
+'#7D6AB2',  // Lavender Indigo
+'#A8C9A0',  // 	Sage Green
+'#F4D6D9',  // Soft Blush Pink
+'#B4D4E3',  // Mist Blue
+'#A97C82',  // Dusty Mauve
+'#FFD662',  // Lemon Yellow
+'#034F84',  // Ocean Blue
+'#B565A7',  // Orchid Purple
 ];
 
 export const statusLevels = [

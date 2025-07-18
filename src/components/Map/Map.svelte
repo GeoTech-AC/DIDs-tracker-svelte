@@ -278,14 +278,21 @@
 </div>
 
 <style>
-  .map {
+  /* .map {
     position: relative;
     width: 100%;
     height: 180vw;
     overflow: hidden;
     border-top: 1px dashed var(--gray);
-  }
-  
+  } */
+  .map {
+  position: relative;
+  width: 100%;
+  height: 180vw;
+  overflow: hidden;
+  border-top: 1px dashed var(--gray);
+  background: linear-gradient(120deg, #f7faff 0%, #e0f7fa 100%);
+}
   @media (min-width: 600px) {
     .map {
       height: 50vw;

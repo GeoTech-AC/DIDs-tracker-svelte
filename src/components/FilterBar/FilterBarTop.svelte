@@ -327,8 +327,8 @@
   label="More filters"
   expandable
   bind:expanded={extraFiltersGeoExpanded}
-  class="fancy-more-filters-btn"
-  />
+/>
+
   {#if extraFiltersGeoExpanded}
   <div transition:slide>
     <div transition:fade>
@@ -424,34 +424,115 @@
     row-gap: 0.7rem;
   }
 }
-.fancy-more-filters-btn button,
-:global(.filter-title.expandable button) {
-  background: linear-gradient(90deg, #aee9f8 0%, #6ed1e7 100%);
-  color: #1b4965;
-  border: none;
-  border-radius: 2em;
-  font-size: 1.15rem;
-  font-weight: 700;
-  padding: 0.7em 2.2em;
-  box-shadow: 0 6px 24px #aee9f833, 0 1px 4px #6ed1e722;
-  transition: 
-    background 0.22s, 
-    color 0.13s, 
-    box-shadow 0.19s, 
-    transform 0.13s;
+
+/* Fancy "More filters" checkbox — black when expanded, white with blue border when collapsed */
+:global(button.filter-title.expandable) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #61c3fa 0%, #aee9f8 100%);
+  color: #134166;
+  border: 2.5px solid #61c3fa;
+  border-radius: 3em;
+  font-size: 1.18rem;
+  font-weight: 900;
+  padding: 1.02em 2.7em 1.02em 3.2em; /* extra left for the checkbox */
+  box-shadow: 0 10px 38px 0 #61c3fa33, 0 2px 16px #aee9f822, 0 0 0 3px #f7faff;
   cursor: pointer;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
   outline: none;
-  margin: 1em 0 0.5em 0;
+  margin: 1.2em 0 1.8em 0;
   position: relative;
   overflow: hidden;
+  transition:
+    background 0.18s,
+    color 0.13s,
+    box-shadow 0.18s,
+    border 0.15s,
+    transform 0.14s;
+  z-index: 12;
 }
 
-.fancy-more-filters-btn button:hover,
-:global(.filter-title.expandable button:hover) {
-  background: linear-gradient(90deg, #6ed1e7 0%, #aee9f8 100%);
-  color: #0b2c43;
-  box-shadow: 0 12px 32px #6ed1e744, 0 3px 12px #aee9f844;
-  transform: scale(1.045);
+/* Hide unwanted icon/box from FilterTitle if present */
+:global(button.filter-title.expandable > span),
+:global(button.filter-title.expandable > span > svg) {
+  display: none !important;
+}
+
+/* Checkbox box to the left */
+:global(button.filter-title.expandable)::before {
+  content: '';
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  position: absolute;
+  left: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: 2.2px solid #61c3fa;
+  border-radius: 0.35em;
+  box-shadow: 0 2px 8px #61c3fa22;
+  transition: background 0.18s, border-color 0.18s;
+  z-index: 2;
+}
+
+/* When expanded, box is solid black with a white checkmark */
+:global(button.filter-title.expandable[aria-expanded="true"])::before {
+  background: #000;
+  border-color: #000;
+}
+
+/* White checkmark for contrast on black */
+:global(button.filter-title.expandable[aria-expanded="true"])::after {
+  content: '';
+  position: absolute;
+  left: 1.31em;
+  top: 50%;
+  width: 0.8em;
+  height: 0.5em;
+  transform: translateY(-60%) rotate(-7deg);
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  border-radius: 0.15em;
+  opacity: 1;
+  z-index: 3;
+  pointer-events: none;
+  background: none;
+}
+:global(button.filter-title.expandable:not([aria-expanded="true"]))::after {
+  content: '';
+  opacity: 0;
+  background: none;
+}
+
+/* Hover and active states for the button */
+:global(button.filter-title.expandable:hover),
+:global(button.filter-title.expandable:focus-visible) {
+  background: linear-gradient(90deg, #aee9f8 0%, #61c3fa 100%);
+  color: #0b2545;
+  border: 2.8px solid #21d8d6;
+  box-shadow: 0 14px 40px #61c3fa55, 0 4px 18px #aee9f855, 0 0 0 9px #b7e8fa55;
+  transform: scale(1.048);
+}
+
+:global(button.filter-title.expandable:active) {
+  background: linear-gradient(90deg, #61c3fa 0%, #21d8d6 100%);
+  color: #0582ca;
+  border: 2.8px solid #61c3fa;
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px #61c3fa44;
+}
+
+/* Chevron (SVG) styling for expand/collapse */
+:global(button.filter-title.expandable svg) {
+  transition: transform 0.33s cubic-bezier(.5,2,.6,1);
+  margin-left: 10px;
+  width: 1.35em;
+  height: 1.35em;
+  vertical-align: middle;
+}
+:global(button.filter-title.expandable[aria-expanded="true"] svg) {
+  transform: rotate(180deg);
 }
 </style>

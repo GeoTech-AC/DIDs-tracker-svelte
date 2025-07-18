@@ -128,13 +128,11 @@
       {/if}
     </span>
     {#if (showReset && chips.length)}
-      <button
-        on:click={handleResetClick}
-      >
-        <span>Reset</span>
-        <span class="reset">+</span>
-      </button>
-    {/if}
+  <button on:click={handleResetClick}>
+    <span>Reset</span>
+    <span class="reset">+</span>
+  </button>
+  {/if}
   </label>
   <div
     class="field"
@@ -264,6 +262,29 @@
   label button:hover, .suggestions input:focus {
     background: linear-gradient(90deg, #0093e9 0%, #80d0c7 100%);
     color: #fff;
+  }
+ 
+  /* Style only the Reset button */
+  button:has(span:first-child) {
+    background: #ffd34f;      /* Brighter yellow, or pick any strong color */
+    border-radius: 1.4em;
+    box-shadow: 0 1px 8px #ffd34f55;
+    padding: 0.5em 1.2em;
+    border: none;
+    transition: background 0.17s, box-shadow 0.17s;
+    margin-left: 0.5em;
+  }
+
+  /* Make the Reset label bold and black */
+  button span:first-child {
+    color: #000;
+    font-weight: 700;
+  }
+
+  /* Optional: On hover, even stronger background */
+  button:has(span:first-child):hover {
+    background: #ffba08;
+    box-shadow: 0 2px 12px #ffba0855;
   }
 
   .field {
