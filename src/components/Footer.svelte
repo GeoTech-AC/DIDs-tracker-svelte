@@ -4,7 +4,7 @@
 
 <footer>
   <p class="sources">
-    Sources: Atlantic Council Research, Bank of International Settlements, International Monetary Fund, John Kiff Database
+    Sources: Atlantic Council Research, The Digital Public Infrastructure Map, World Bank, Biometric Update.com
   </p>
   <Share>Share this view</Share>
 </footer>

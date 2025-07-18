@@ -1,10 +1,10 @@
 # DIDs Tracker
 
-> The Central Bank Digital Currency Tracker of the Atlantic Council
+> The Digital IDs Tracker of the Atlantic Council
 
 This is the official code for the [Digital IDs Tracker of the Atlantic Council](https://www.atlanticcouncil.org/blogs/econographics/the-rise-of-central-bank-digital-currencies/)..
 
-![Screenshot of the CBDC Tracker](./public/img/screenshot.png)
+![Screenshot of the DID Tracker](./public/img/screenshot.png)
 
 
 ## Run locally (for development purposes)

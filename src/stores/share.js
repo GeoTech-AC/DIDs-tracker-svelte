@@ -3,15 +3,25 @@ import { derived } from 'svelte/store';
 import {
   statusFilter,
   useCaseFilter,
-  architectureFilter,
-  infrastructureFilter,
-  accessFilter,
-  countryFilter
+  countryFilter,
+  // architectureFilter,
+  // infrastructureFilter,
+  // accessFilter,
+  // technologyFilter,
+  systemNameFilter,
+  incomeGroupFilter,
+  authenticationMethodFilter,
+  idMediumFilter,
+  interoperabilityFilter,
+  dataProtectionFilter,
+  inclusionFilter,
+  // controversiesFilter,
+  // fundingSourceFilter,
 } from './filter';
 import { selectedId } from './selection';
 import { areAllSelected } from "../utils/logic";
 
-export const baseUrl = 'https://www.atlanticcouncil.org/cbdctracker';
+export const baseUrl = 'https://www.atlanticcouncil.org/didtracker';
 // export const baseUrl = 'https://geoecon.github.io/cbdc-tracker';
 // export const baseUrl = 'http://localhost:5000';
 
@@ -42,21 +52,41 @@ export const parseUrl = (urlParams) => {
   const params = urlParams.get('params') || '';
   const country = urlParams.get('country') || '';
 
+
+
   if (params) {
     const [
       status,
       useCase,
-      architecture,
-      infrastructure,
-      access
+      // architecture,
+      // infrastructure,
+      // access,
+      system, 
+      income, 
+      authentication, 
+      medium, 
+      interoperability, 
+      protection, 
+      inclusion, 
+      // controversies, 
+      // funding, 
     ] = params.split(';');
     res = {
       ...res,
       status: binaryToBool(hexToBinary(status)),
       useCase: binaryToBool(hexToBinary(useCase)),
-      architecture: binaryToBool(hexToBinary(architecture)),
-      infrastructure: binaryToBool(hexToBinary(infrastructure)),
-      access: binaryToBool(hexToBinary(access)),
+      // architecture: binaryToBool(hexToBinary(architecture)),
+      // infrastructure: binaryToBool(hexToBinary(infrastructure)),
+      // access: binaryToBool(hexToBinary(access)),
+      // system: binaryToBool(hexToBinary(system)),
+      income: binaryToBool(hexToBinary(income)),
+      authentication: binaryToBool(hexToBinary(authentication)),
+      medium: binaryToBool(hexToBinary(medium)),
+      interoperability: binaryToBool(hexToBinary(interoperability)),
+      protection: binaryToBool(hexToBinary(protection)),
+      inclusion: binaryToBool(hexToBinary(inclusion)),
+      // controversies: binaryToBool(hexToBinary(controversies)),
+      // funding: binaryToBool(hexToBinary(funding)),
     };
   }
 
@@ -79,27 +109,46 @@ export const filterUrl = derived(
   [
     statusFilter,
     useCaseFilter,
-    architectureFilter,
-    infrastructureFilter,
-    accessFilter,
+    // architectureFilter,
+    // infrastructureFilter,
+    // accessFilter,
     countryFilter,
+    authenticationMethodFilter,
+    idMediumFilter,
+    interoperabilityFilter,
+    dataProtectionFilter,
+    inclusionFilter,
+      incomeGroupFilter,
     selectedId
   ],
   ([
     $statusFilter,
     $useCaseFilter,
-    $architectureFilter,
-    $infrastructureFilter,
-    $accessFilter,
+    // $architectureFilter,
+    // $infrastructureFilter,
+    // $accessFilter,
     $countryFilter,
-    $selectedId
+    incomeGroupFilter,
+    authenticationMethodFilter,
+    idMediumFilter,
+    interoperabilityFilter,
+    dataProtectionFilter,
+    inclusionFilter,
+      $selectedId
   ]) => {
     const params = filtersToHex([
       $statusFilter,
       $useCaseFilter,
-      $architectureFilter,
-      $infrastructureFilter,
-      $accessFilter
+      // $architectureFilter,
+      // $infrastructureFilter,
+      incomeGroupFilter,
+      incomeGroupFilter,
+      authenticationMethodFilter,
+      idMediumFilter,
+      interoperabilityFilter,
+      dataProtectionFilter,
+      inclusionFilter,
+      // $accessFilter
     ]);
     const country = filterToString($countryFilter) || '';
 

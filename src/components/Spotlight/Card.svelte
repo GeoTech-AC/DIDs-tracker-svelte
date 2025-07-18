@@ -15,9 +15,9 @@
 
 <div class="spotlight-card">
   <div class="card-header">
-    <div class="card-country-currency">
+    <div class="card-country-identity">
       <div class="card-country">{datum.name}</div>
-      <div class="card-project">{datum.currency_name}</div> 
+      <div class="card-project">{datum.digital_id_name}</div> 
     </div>
     <div class="card-overview">
       <p>{datum.overview_spotlight}</p>
@@ -27,7 +27,7 @@
 
   <div class="card-key-developments">
     <p class="text-md">
-      {datum.key_developments_spotlight}
+      {@html datum.key_developments_spotlight.replace(/\n/g, '<br>')}
     </p>
   </div>
 

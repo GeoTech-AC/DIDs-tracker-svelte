@@ -81,8 +81,8 @@
       </div>
       <div class="header-content">
         <h1>{datum.name.name === 'United States of America' ? 'United States' : datum.name.name}</h1>
-        {#if (datum.currency_name)} 
-          <h2>Project Name – {datum.currency_name}</h2>
+        {#if (datum.digital_id_name)} 
+          <h2>Project Name – {datum.digital_id_name}</h2>
         {/if}
         <p>{datum.overview}</p>
       </div>
@@ -113,11 +113,11 @@
       </div>
       <main>
         <h2>Key developments</h2>
-        <p>{@html datum.key_developments}</p>
+        <p>{@html datum.key_developments.replace(/\n/g, '<br>')}</p>
         <h4>Sources</h4>
         <div class="sources">
-          {#if (datum.sources.central_bank_name)}
-            <a href={datum.sources.central_bank_url} target="_blank">{datum.sources.central_bank_name}</a>
+          {#if (datum.sources.managing_authority_name)}
+            <a href={datum.sources.managing_authority_url} target="_blank">{datum.sources.managing_authority_name}</a>
           {/if}
           <p>Atlantic Council Research</p>
           {#if (datum.sources.media_urls.length)}

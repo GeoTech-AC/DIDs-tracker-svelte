@@ -1,15 +1,43 @@
 {
   "use_case": {
     "name": "Purpose",
-    "title": "Purpose/Use Case of CBDC",
+    "title": "Purpose/Use Case of DIDs",
     "categories": [
       {
-        "name": "Retail",
-        "definition": "The CBDC is available to the general public for all transactions"
+        "name": "Voting",
+        "definition": "Used for voter registration or election participation."
       },
       {
-        "name": "Wholesale",
-        "definition": "The CBDC is used by financial institutions for bank-to-bank transactions and settlements"
+        "name": "Health Care",
+        "definition": "Linked to access to health services or insurance."
+      },
+      {
+        "name": "Social Welfare / Subsidies",
+        "definition": "Used to deliver government benefits like cash transfers or pensions."
+      },
+      {
+        "name": "Banking / Financial Inclusion",
+        "definition": "Used to comply with financial KYC norms."
+      },
+      {
+        "name": "Tax / Revenue",
+        "definition": "Linked to taxpayer identification or filing systems."
+      },
+      {
+        "name": "Immigration / Border Control",
+        "definition": "Used at border crossings or in e-passport systems."
+      },
+      {
+        "name": "Education",
+        "definition": "Required for school enrollment, exams, or scholarships."
+      },
+      {
+        "name": "Private Sector Access",
+        "definition": "Used in telecom, banking, or e-commerce platforms."
+      },
+      {
+        "name": "Multiple / All",
+        "definition": "Used in multiple/all domains."
       }
     ]
   },
@@ -47,32 +75,255 @@
     "name": "Infrastructure",
     "title": "The infrastructure could be based on a conventional centrally controlled database or on  distributed ledger technology (DLT). Conventional and DLT-based infrastructures often store data multiple times and in physically separate locations. The main difference between them lies in how the transactions are verified and secured."
   },
-  "status": {
-    "name": "CBDC Status",
+  "system_name": {
+    "name": "System Name",
+    "title": "Name of the system introduced for Digital IDs i.e. e-ID, Adhaar, etc."
+  },
+  "year_introduced": {
+    "name": "Year Introduced",
+    "title": "What year was the current system first introduced."
+  },
+  "international_partners": {
+    "name": "International Partners",
+    "title": "Who are the internation partners i.e. World Bank, UNDP, etc."
+  },
+  "income_group": {
+    "name": "Income Group",
+    "title": "The Income Group according to the World Bank.",
     "categories": [
       {
+        "name": "Low income",
+        "definition": "GNI per capita of $1,135 or less."
+      },
+      {
+        "name": "Lower-middle income",
+        "definition": "GNI per capita between $1,136 and $4,465."
+      },
+      {
+        "name": "Upper-middle income",
+        "definition": "GNI per capita between $4,466 and $13,845."
+      },
+      {
+        "name": "High income",
+        "definition": "GNI per capita of $13,846 or more."
+      }
+    ]
+  },
+  "authentication_method": {
+    "name": "Authentication Method",
+    "title": "The method(s) used to verify user identity.",
+    "categories": [
+      {
+        "name": "Biometric",
+        "definition": "Uses fingerprints, iris scans, facial recognition, or other physiological traits."
+      },
+      {
+        "name": "Mobile SIM/OTP",
+        "definition": "Uses mobile phone numbers or one-time passcodes."
+      },
+      {
+        "name": "Password/PIN",
+        "definition": "Uses traditional username-password or PIN login credentials."
+      },
+      {
+        "name": "Multi-factor",
+        "definition": "Combines two or more methods (e.g., biometric and PIN)."
+      }
+    ]
+   },
+  "id_medium": {
+  "name": "ID Medium",
+  "title": "The primary delivery mechanism or form factor for the digital ID.",
+  "categories": [
+    {
+      "name": "Smart Card",
+      "definition": "A physical card embedded with a chip that stores identity information, often used with biometric authentication or PINs."
+    },
+    {
+      "name": "Mobile App",
+      "definition": "A smartphone application that allows users to access, store, or present their digital ID securely."
+    },
+    {
+      "name": "Web Portal",
+      "definition": "A secure online website or dashboard through which users can access or verify their identity credentials."
+    },
+    {
+      "name": "Hybrid",
+      "definition": "A combination of two or more mediums (e.g., smart card plus mobile app) that provide redundancy or flexibility across platforms."
+    }
+  ]
+  },
+   "data_protection": {
+    "name": "Data Protection Framework",
+    "title": "Legal and regulatory protection for digital identity data.",
+    "categories": [
+      {
+        "name": "Strong",
+        "definition": "Comprehensive laws with active enforcement and independent oversight."
+      },
+      {
+        "name": "Moderate",
+        "definition": "Laws exist but are poorly enforced or outdated."
+      },
+      {
+        "name": "Weak / None",
+        "definition": "No clear data protection laws or significant legal gaps."
+      }
+    ]
+   },
+   "inclusion_risk": {
+    "name": "Inclusion & Accessibility Risk",
+    "title": "Risk of excluding populations due to infrastructure or legal barriers.",
+    "categories": [
+      {
+        "name": "High Risk",
+        "definition": "Large parts of the population face access or documentation challenges."
+      },
+      {
+        "name": "Medium Risk",
+        "definition": "Partial access barriers exist, but mitigation programs are in place."
+      },
+      {
+        "name": "Low Risk",
+        "definition": "High coverage and proactive inclusion strategies are present."
+      },
+      {
+        "name": "Unknown",
+        "definition": "Lack of data or clarity on inclusion risks."
+      }
+    ]
+  },
+  "interoperability": {
+    "name": "Interoperability",
+    "title": "Extent to which the digital ID integrates with other systems.",
+    "categories": [
+      {
+        "name": "Cross-border Compatible",
+        "definition": "Designed for regional or international interoperability."
+      },
+      {
+        "name": "National Integrated",
+        "definition": "Integrated across national government and public services."
+      },
+      {
+        "name": "Siloed / Not Interoperable",
+        "definition": "Limited to specific systems or regions with no broad integration."
+      }
+    ]
+   },
+   "controversies": {
+    "name": "Known Controversies",
+    "title": "Major risks, criticisms, or incidents associated with the ID system.",
+    "categories": [
+      {
+        "name": "Surveillance Concerns",
+        "definition": "Potential or actual misuse by state actors for tracking or profiling."
+      },
+      {
+        "name": "Data Breaches",
+        "definition": "Incidents involving unauthorized access or exposure of personal data."
+      },
+      {
+        "name": "Use in Deportation",
+        "definition": "Linked to immigration enforcement or cross-border expulsions."
+      },
+      {
+        "name": "Exclusion or Discrimination",
+        "definition": "Marginalized groups are systematically excluded."
+      },
+      {
+        "name": "None / Not Reported",
+        "definition": "No major controversies publicly documented."
+      }
+    ]
+  },
+  "technology_vendor": {
+    "name": "Technology Vendor",
+    "title": "Key private or public actors developing the ID system.",
+    "categories": [
+      {
+        "name": "IDEMIA",
+        "definition": "French multinational providing biometric and identity tech."
+      },
+      {
+        "name": "Thales",
+        "definition": "Global security and identity technology company."
+      },
+      {
+        "name": "Okta",
+        "definition": "Provider (IdP) for businesses, offering solutions to manage user identities and access across applications.."
+      },
+      {
+        "name": "Innovatrics",
+        "definition": "Slovak provider of biometric identification systems."
+      },
+      {
+        "name": "Iris Corporation",
+        "definition": "Malaysian company known for e-passports and smart cards."
+      },
+      {
+        "name": "Local or Government-built",
+        "definition": "Developed internally by domestic institutions or local firms."
+      },
+      {
+        "name": "Undisclosed / Unknown",
+        "definition": "No public information on the system vendor."
+      }
+    ]
+  },
+  "funding_source": {
+    "name": "Funding / Sponsorship",
+    "title": "The main source of financial and technical support for the ID system.",
+    "categories": [
+      {
+        "name": "Domestic Budget",
+        "definition": "Fully funded by the national government."
+      },
+      {
+        "name": "Public-Private Partnership (PPP)",
+        "definition": "Joint funding and development by government and private firms."
+      },
+      {
+        "name": "International Donors",
+        "definition": "Supported by World Bank, UNDP, or other development partners."
+      },
+      {
+        "name": "Private Sector-Led",
+        "definition": "Primarily initiated and implemented by private companies."
+      }
+    ]
+  },
+  "status": {
+    "name": "DID Status",
+    "title": "The current stage of the national digital ID system.",
+    "categories": [
+      {
+        "name": "No Initiative / Inactive",
+        "definition": "No official announcement or steps taken by the government toward establishing a digital ID system."
+      },
+      {
         "name": "Research",
-        "definition": "Established working groups to explore the use cases, impact, and feasibility of a CBDC"
+        "definition": "The government is studying digital ID feasibility, conducting stakeholder consultations, or drafting legal/policy frameworks."
       },
       {
         "name": "Development",
-        "definition": "Initiated technical build and early testing of a CBDC in controlled environments"
+        "definition": "The government has moved beyond research and is actively building technical infrastructure, software, or legal mechanisms and early testing of a DID in controlled environments."
       },
       {
         "name": "Pilot",
-        "definition": "Initiated small-scale testing of a CBDC in the real world with a limited number of participants"
+        "definition": "A small-scale trial or regional test is being conducted to evaluate the functionality of the digital ID system."
       },
       {
         "name": "Launched",
-        "definition": "Issued a CBDC for widespread retail and/or wholesale use"
+        "definition": "The digital ID system is officially deployed and in use by the general population or target groups."
       },
       {
         "name": "Canceled",
-        "definition": "CBDC initiative decommissioned"
+        "definition": "The digital ID project was officially terminated and is no longer being pursued."
       },
       {
         "name": "Other",
-        "definition": "No formal CBDC research but ongoing development of digital wallets and new payments infrastructure"
+        "definition": "No formal DID research."
       }
     ]
   }

@@ -1,11 +1,15 @@
 export const statusColors = [
-  '#F1B2EE',
-  '#95D69A',
-  '#61D8D6',
-  '#AAC8FC',
-  '#DAC584',
+  '#F1B20E',
+  '#B5D66A',
+  '#21D8D6',
+  '#2AA86C',
+  '#DA8524',
   '#FFB3B5',
-  '#C8B8F5'
+  '#A2F4C3',
+  '#637898',
+  '#D3B078',
+  '#C8B8F5',
+  '#5898D5'
 ];
 
 export const statusLevels = [
@@ -36,25 +40,6 @@ export const statusLevels = [
   {
     id: 6,
     name: 'Other'
-  }
-];
-
-export const useCaseLevels = [
-  {
-    id: 0,
-    name: 'Retail',
-  },
-  {
-    id: 1,
-    name: 'Wholesale',
-  },
-  {
-    id: 2,
-    name: 'Both',
-  },
-  {
-    id: 3,
-    name: 'Undecided',
   }
 ];
 
@@ -110,3 +95,250 @@ export const architectureLevels = [
     name: 'Undecided',
   }
 ];
+
+
+export const incomeLevels = [
+  {
+    id: 0,
+    name: 'Low',
+  },
+  {
+    id: 1,
+    name: 'Lower_middle',
+  },
+  {
+    id: 2,
+    name: 'Upper_middle',
+  },
+  {
+    id: 3,
+    name: 'High',
+  },  
+  {
+    id: 4,
+    name: 'Undecided',
+  }  
+];
+
+
+export const authenticationLevels = [
+  {
+    id: 0,
+    name: 'Biometric',
+  },
+  {
+    id: 1,
+    name: 'OTP',
+  },
+  {
+    id: 2,
+    name: 'PIN',
+  },
+  {
+    id: 3,
+    name: 'Multifactor',
+  },
+  {
+    id: 4,
+    name: 'Undecided',
+  }
+];
+
+
+export const mediumLevels = [
+  {
+    id: 0,
+    name: 'Smart_Card',
+  },
+  {
+    id: 1,
+    name: 'Mobile_App',
+  },
+  {
+    id: 2,
+    name: 'Web_Portal',
+  },
+  {
+    id: 3,
+    name: 'Hybrid',
+  },
+  {
+    id: 4,
+    name: 'Undecided',
+  }
+];
+
+
+
+export const useCaseLevels = [
+  {
+    id: 0,
+    name: 'Voting',
+  },
+  {
+    id: 1,
+    name: 'Healthcare',
+  },
+  {
+    id: 2,
+    name: 'Welfare',
+  },
+  {
+    id: 3,
+    name: 'Financial',
+  },
+  {
+    id: 4,
+    name: 'Tax',
+  },
+  {
+    id: 5,
+    name: 'Immigration',
+  },
+  {
+    id: 6,
+    name: 'Education',
+  },
+  {
+    id: 7,
+    name: 'Private',
+  },
+  {
+    id: 8,
+    name: 'Multiple',
+  }
+  ,
+  {
+    id: 9,
+    name: 'Undecided',
+  }
+];
+
+
+export const interoperabilityLevels = [
+  {
+    id: 0,
+    name: 'Cross_Border',
+  },
+  {
+    id: 1,
+    name: 'National',
+  },
+  {
+    id: 2,
+    name: 'Siloed',
+  },
+  {
+    id: 3,
+    name: 'Undecided',
+  }
+];
+
+
+
+export const dataprotectionLevels = [
+  {
+    id: 0,
+    name: 'Strong',
+  },
+  {
+    id: 1,
+    name: 'Moderate',
+  },
+  {
+    id: 2,
+    name: 'Weak',
+  },
+  {
+    id: 3,
+    name: 'Undecided',
+  }
+];
+
+
+export const inclusionLevels = [
+  {
+    id: 0,
+    name: 'High',
+  },
+  {
+    id: 1,
+    name: 'Medium',
+  },
+  {
+    id: 2,
+    name: 'Low',
+  },
+  {
+    id: 3,
+    name: 'Unknown',
+  },
+  {
+    id: 4,
+    name: 'Undecided',
+  }
+];
+
+
+
+
+export const controversiesLevels = [
+  {
+    id: 0,
+    name: 'Surveillance',
+  },
+  {
+    id: 1,
+    name: 'Breaches',
+  },
+  {
+    id: 2,
+    name: 'Deportation',
+  },
+  {
+    id: 3,
+    name: 'Deprivation',
+  },
+  {
+    id: 4,
+    name: 'None',
+  },
+  {
+    id: 5,
+    name: 'Undecided',
+  }
+];
+
+
+
+export const fundersLevels = [
+  {
+    id: 0,
+    name: 'Domestic',
+  },
+  {
+    id: 1,
+    name: 'PPP',
+  },
+  {
+    id: 2,
+    name: 'International',
+  },
+  {
+    id: 3,
+    name: 'Private',
+  },
+  {
+    id: 4,
+    name: 'Multiple',
+  },
+  {
+    id: 5,
+    name: 'Undecided',
+  }
+];
+
+
+
+
+

@@ -5,28 +5,65 @@
     countryFilter,
     statusFilter,
     useCaseFilter,
-    architectureFilter,
-    infrastructureFilter,
-    accessFilter,
-    corporatePartnershipFilter,
-    crossborderPartnershipsFilter
-   } from '../../stores/filter';
+    // architectureFilter,
+    // infrastructureFilter,
+    // accessFilter,
+    // corporatePartnershipFilter,
+    // crossborderPartnershipsFilter,
+    systemNameFilter,
+    incomeGroupFilter,
+    authenticationMethodFilter,
+    idMediumFilter,
+    interoperabilityFilter,
+    dataProtectionFilter,
+    inclusionFilter,
+    // controversiesFilter,
+    // technologyPartnerFilter,
+    // fundingSourceFilter,
+    // internationalpartnerFilter
+   } 
+   
+   
+  
+   from '../../stores/filter';
   import {
     fullStatusRollup,
     fullUseCaseRollup,
-    fullArchitectureRollup,
-    fullInfrastructureRollup,
-    fullAccessRollup,
+    // fullArchitectureRollup,
+    // fullInfrastructureRollup,
+    // fullAccessRollup,
     statusRollup,
     useCaseRollup,
-    architectureRollup,
-    infrastructureRollup,
-    accessRollup,
-    fullCorporatePartnershipRollup,
-    fullCrossborderPartnershipsRollup,
-    crossborderPartnershipsRollup,
-    corporatePartnershipRollup
-   } from '../../stores/aggregation';
+    // architectureRollup,
+    // infrastructureRollup,
+    // accessRollup,
+    // fullCorporatePartnershipRollup,
+    // fullCrossborderPartnershipsRollup,
+    // crossborderPartnershipsRollup,
+    // corporatePartnershipRollup,
+    fullsystemNameRollup,
+    fullincomeGroupRollup,
+    fullauthenticationMethodRollup,
+    fullidMediumRollup,
+    fullinteroperabilityRollup,
+    fulldataProtectionRollup,
+    fullinclusionRollup,
+    // fullcontroversiesRollup,
+    // fulltechnologyPartnerRollup,
+    // fullfundingSourceRollup,
+    // fullinternationalpartnerRollup,
+    systemNameRollup,
+    incomeGroupRollup,
+    authenticationMethodRollup,
+    idMediumRollup,
+    interoperabilityRollup,
+    dataProtectionRollup,
+    inclusionRollup,
+    // controversiesRollup,
+    // technologyPartnerRollup,
+    // fundingSourceRollup,
+    // internationalpartnerRollup
+  } from '../../stores/aggregation';
   import { categoryNameScale } from '../../stores/scales';
   import { isVertical } from '../../stores/device';
   import { definitions, tooltip } from '../../stores/definitions';
@@ -60,58 +97,187 @@
   ].map((d, i) => ({...d, id: i}));
 
   $: dropdownsBottom = [
-    {
-      filter: useCaseFilter,
-      label: $categoryNameScale.use_case,
-      shortCuts: [],
-      fullRollup: $fullUseCaseRollup,
-      rollup: $useCaseRollup,
-      info: $definitions.use_case
-    },
-    {
-      filter: architectureFilter,
-      label: $categoryNameScale.architecture,
-      shortCuts: [],
-      fullRollup: $fullArchitectureRollup,
-      rollup: $architectureRollup,
-      info: $definitions.architecture
-    },
-    {
-      filter: infrastructureFilter,
-      label: $categoryNameScale.infrastructure,
-      shortCuts: [],
-      fullRollup: $fullInfrastructureRollup,
-      rollup: $infrastructureRollup,
-      info: $definitions.infrastructure
-    },
-    {
-      filter: accessFilter,
-      label: $categoryNameScale.access,
-      shortCuts: [],
-      fullRollup: $fullAccessRollup,
-      rollup: $accessRollup,
-      info: $definitions.access
-    }
+    // {
+    //   filter: useCaseFilter,
+    //   label: $categoryNameScale.use_case,
+    //   shortCuts: [],
+    //   fullRollup: $fullUseCaseRollup,
+    //   rollup: $useCaseRollup,
+    //   info: $definitions.use_case
+    // },
+    // {
+    //   filter: architectureFilter,
+    //   label: $categoryNameScale.architecture,
+    //   shortCuts: [],
+    //   fullRollup: $fullArchitectureRollup,
+    //   rollup: $architectureRollup,
+    //   info: $definitions.architecture
+    // },
+    // {
+    //   filter: infrastructureFilter,
+    //   label: $categoryNameScale.infrastructure,
+    //   shortCuts: [],
+    //   fullRollup: $fullInfrastructureRollup,
+    //   rollup: $infrastructureRollup,
+    //   info: $definitions.infrastructure
+    // },
+    // {
+    //   filter: accessFilter,
+    //   label: $categoryNameScale.access,
+    //   shortCuts: [],
+    //   fullRollup: $fullAccessRollup,
+    //   rollup: $accessRollup,
+    //   info: $definitions.access
+    // },
+    // {
+    //   filter: incomeGroupFilter,
+    //   label: $categoryNameScale.income,
+    //   shortCuts: [],
+    //   fullRollup: $fullincomeGroupRollup,
+    //   rollup: $incomeGroupRollup,
+    //   info: $definitions.income_group
+    // },
+    // {
+    //   filter: authenticationMethodFilter,
+    //   label: $categoryNameScale.authentication,
+    //   shortCuts: [],
+    //   fullRollup: $fullauthenticationMethodRollup,
+    //   rollup: $authenticationMethodRollup,
+    //   info: $definitions.authentication_method
+    // },
+    // {
+    //   filter: idMediumFilter,
+    //   label: $categoryNameScale.medium,
+    //   shortCuts: [],
+    //   fullRollup: $fullidMediumRollup,
+    //   rollup: $idMediumRollup,
+    //   info: $definitions.id_medium
+    // },
+    // {
+    //   filter: interoperabilityFilter,
+    //   label: $categoryNameScale.interoperability,
+    //   shortCuts: [],
+    //   fullRollup: $fullinteroperabilityRollup,
+    //   rollup: $interoperabilityRollup,
+    //   info: $definitions.interoperability
+    // },
   ].map((d, i) => ({...d, id: i}));
 
   $: dropdownsBottomExtra = [
+    // {
+    //   filter: crossborderPartnershipsFilter,
+    //   label: $categoryNameScale.crossborder_partnerships,
+    //   shortCuts: [],
+    //   fullRollup: $fullCrossborderPartnershipsRollup,
+    //   rollup: $crossborderPartnershipsRollup,
+    //   info: $definitions.crossborder_projets
+    // },
+    // {
+    //   filter: corporatePartnershipFilter,
+    //   label: $categoryNameScale.corporate_partnership,
+    //   shortCuts: [],
+    //   fullRollup: $fullCorporatePartnershipRollup,
+    //   rollup: $corporatePartnershipRollup,
+    //   info: $definitions.technology_partnerships
+    // },
     {
-      filter: crossborderPartnershipsFilter,
-      label: $categoryNameScale.crossborder_partnerships,
+      filter: incomeGroupFilter,
+      label: $categoryNameScale.income,
       shortCuts: [],
-      fullRollup: $fullCrossborderPartnershipsRollup,
-      rollup: $crossborderPartnershipsRollup,
-      info: $definitions.crossborder_projets
+      fullRollup: $fullincomeGroupRollup,
+      rollup: $incomeGroupRollup,
+      info: $definitions.income_group
     },
     {
-      filter: corporatePartnershipFilter,
-      label: $categoryNameScale.corporate_partnership,
+      filter: authenticationMethodFilter,
+      label: $categoryNameScale.authentication,
       shortCuts: [],
-      fullRollup: $fullCorporatePartnershipRollup,
-      rollup: $corporatePartnershipRollup,
-      info: $definitions.technology_partnerships
-    }
+      fullRollup: $fullauthenticationMethodRollup,
+      rollup: $authenticationMethodRollup,
+      info: $definitions.authentication_method
+    },
+    {
+      filter: idMediumFilter,
+      label: $categoryNameScale.medium,
+      shortCuts: [],
+      fullRollup: $fullidMediumRollup,
+      rollup: $idMediumRollup,
+      info: $definitions.id_medium
+    },
+    {
+      filter: interoperabilityFilter,
+      label: $categoryNameScale.interoperability,
+      shortCuts: [],
+      fullRollup: $fullinteroperabilityRollup,
+      rollup: $interoperabilityRollup,
+      info: $definitions.interoperability
+    },
+    {
+      filter: systemNameFilter,
+      label: $categoryNameScale.system,
+      shortCuts: [],
+      fullRollup: $fullsystemNameRollup,
+      rollup: $systemNameRollup,
+      info: $definitions.system_name
+    },
+    // {
+    //   filter: incomeGroupFilter,
+    //   label: $categoryNameScale.income,
+    //   shortCuts: [],
+    //   fullRollup: $fullincomeGroupRollup,
+    //   rollup: $incomeGroupRollup,
+    //   info: $definitions.income_group
+    // },
+    {
+      filter: dataProtectionFilter,
+      label: $categoryNameScale.protection,
+      shortCuts: [],
+      fullRollup: $fulldataProtectionRollup,
+      rollup: $dataProtectionRollup,
+      info: $definitions.data_protection
+    },
+    {
+      filter: inclusionFilter,
+      label: $categoryNameScale.inclusion,
+      shortCuts: [],
+      fullRollup: $fullinclusionRollup,
+      rollup: $inclusionRollup,
+      info: $definitions.inclusion_risk
+    },
+    // {
+    //   filter: controversiesFilter,
+    //   label: $categoryNameScale.controversies,
+    //   shortCuts: [],
+    //   fullRollup: $fullcontroversiesRollup,
+    //   rollup: $controversiesRollup,
+    //   info: $definitions.controversies
+    // },
+    // {
+    //   filter: technologyPartnerFilter,
+    //   label: $categoryNameScale.technology,
+    //   shortCuts: [],
+    //   fullRollup: $fulltechnologyPartnerRollup,
+    //   rollup: $technologyPartnerRollup,
+    //   info: $definitions.technology
+    // },
+    // {
+    //   filter: fundingSourceFilter,
+    //   label: $categoryNameScale.funding,
+    //   shortCuts: [],
+    //   fullRollup: $fullfundingSourceRollup,
+    //   rollup: $fundingSourceRollup,
+    //   info: $definitions.funding_source
+    // },
+    // {
+    //   filter: internationalpartnerFilter,
+    //   label: $categoryNameScale.international_partner,
+    //   shortCuts: [],
+    //   fullRollup: $fullinternationalpartnerRollup,
+    //   rollup: $internationalpartnerRollup,
+    //   info: $definitions.international_partners
+    // }
   ].map((d, i) => ({...d, id: i}));
+
 
   $: maxColumns = Math.max(dropdownsTop.length, 4);
 </script>

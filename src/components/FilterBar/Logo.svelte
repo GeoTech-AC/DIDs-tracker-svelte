@@ -4,7 +4,7 @@
 
 {#if (!$isVertical)}
   <div class="logo">
-    <img src="./img/logo-smaller.png" alt="Logo of the Atlantic Council GeoEconomics Center" />
+    <img src="./img/logo-smaller.png" alt="Logo of the Atlantic Council GeoTech Center" />
   </div>
 {/if}
 

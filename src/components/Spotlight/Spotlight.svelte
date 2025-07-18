@@ -8,14 +8,16 @@ onMount(() => {
 });
 </script>
 
-<div class="spotlight-section">
-  <h1>Country Spotlight</h1>
-  <div class="spotlight-container">
-    {#each $spotlightdata as d}
-    <Card datum={d} />
-    {/each}  
-  </div>   
-</div>
+{#if $spotlightdata && $spotlightdata.length > 0}
+  <div class="spotlight-section">
+    <h1>Country Spotlight</h1>
+    <div class="spotlight-container">
+      {#each $spotlightdata as d}
+        <Card datum={d} />
+      {/each}
+    </div>
+  </div>
+{/if}
 
 <style>
   .spotlight-section {

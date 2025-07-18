@@ -14,7 +14,7 @@ export const spotlightdata = derived(
       return {
         ...d,
 				...d.name,
-        ...d.currency_name,
+        ...d.digital_id_name,
 				...d.overview_spotlight,
         ...d.key_developments_spotlight
       };

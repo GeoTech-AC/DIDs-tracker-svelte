@@ -31,7 +31,7 @@
 >
   <div class="countries">
     <h5 class="total">
-      <span>{totalCountries}</span> Countr{totalCountries === 1 ? 'y' : 'ies'} / Currency Union{totalCountries === 1 ? '' : 's'} Tracked
+      <span>{totalCountries}</span> Countr{totalCountries === 1 ? 'y' : 'ies'} / Identity Union{totalCountries === 1 ? '' : 's'} Tracked
     </h5>
     <Dropdown
       filter={countryFilter}

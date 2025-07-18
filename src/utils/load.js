@@ -24,7 +24,7 @@ export const loadTrackerData = async (dataPath) => {
     return {
       owner: d.Owner,
       name: d.Name,
-      currency_name: d['Name of CBDC'],
+      digital_id_name: d['System Name'],
       overview: d.Overview,
       overview_spotlight: d['Overview Spotlight'],
       key_developments: d['Key Developments'],
@@ -34,16 +34,28 @@ export const loadTrackerData = async (dataPath) => {
         new_status: curate(d['Present Status']),
         // new_status: curate(d['October Status']),
         use_case: curate(d['Use case']),
-        technology: curate(d['Underlying technology']),
-        architecture: curate(d['Architecture: direct CBDC or hybrid']),
-        infrastructure: curate(d['Infrastructure: DLT or conventional']),
-        access: curate(d['Access: token or account']),
-        corporate_partnership: curate(d['Technology partnership']),
-        crossborder_partnerships: curate(d['Cross-border projects']),
+        // technology: curate(d['Underlying technology']),
+        // architecture: curate(d['Architecture: direct CBDC or hybrid']),
+        // infrastructure: curate(d['Infrastructure: DLT or conventional']),
+        // access: curate(d['Access: token or account']),
+        // corporate_partnership: curate(d['Technology partnership']),
+        // crossborder_partnerships: curate(d['Cross-border projects']),
+        use_case: curate(d['Use Cases']),
+        system: curate(d['System Name']),
+        income: curate(d['Income Group']),
+        authentication: curate(d['Authentication Method']),
+        medium: curate(d['ID Medium']),
+        interoperability: curate(d['Interoperatability']),
+        protection: curate(d['Data Protection Framework']),
+        inclusion: curate(d['Inclusion and Accessibility Risk']), 
+        // controversies: curate(d['Known Controversies']),
+        // technology: curate(d['Technology Providers']),
+        // funding: curate(d['Funding Source']),
+        // international_partner: curate(d['Internation Partners']),
       },
       sources: {
-        central_bank_name: d['Central Bank Name'],
-        central_bank_url: d['Central Bank Source to Hyperlink'],
+        managing_authority_name: d['Managing Authority'],
+        managing_authority_url: d['Managing Authority Source to Hyperlink'],
         // media_urls: d['Media Sources'].split(';').filter(dd => dd)
         media_urls: d['Media Sources'].split(';').filter(dd => dd)
       },
@@ -51,7 +63,8 @@ export const loadTrackerData = async (dataPath) => {
     };
   });
 
-  // filter for valid entries
+
+// filter for valid entries
   const filteredData = data
     .filter(
       (d) => d.categories.new_status !== 'not available'
