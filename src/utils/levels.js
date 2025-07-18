@@ -136,10 +136,14 @@ export const authenticationLevels = [
   },
   {
     id: 3,
-    name: 'Multifactor',
+    name: 'Cryptography',
   },
   {
     id: 4,
+    name: 'Multifactor',
+  },
+  {
+    id: 5,
     name: 'Undecided',
   }
 ];

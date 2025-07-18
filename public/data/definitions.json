@@ -126,6 +126,10 @@
         "definition": "Uses traditional username-password or PIN login credentials."
       },
       {
+        "name": "Cryptography",
+        "definition": "Public key cryptography, a system that uses a pair of digital keys."
+      },
+      {
         "name": "Multi-factor",
         "definition": "Combines two or more methods (e.g., biometric and PIN)."
       }
