@@ -188,66 +188,95 @@
 
 <style>
   g {
-    user-select: none;
-    pointer-events: none;
-  }
+  user-select: none;
+  pointer-events: none;
+}
 
-  g.tag-label {
-    pointer-events: all;
-  }
+g.tag-label {
+  pointer-events: all;
+}
 
-  .background {
-    fill: none;
-  }
+/* Connector Path Styles */
+.tag-connector-path {
+  stroke-width: 2.2;
+  fill: none;
+  filter: drop-shadow(0 2px 6px #90e0ef66);
+}
 
-  g.shadow-hover-tag {
-    visibility: hidden;
-  }
+.tag-connector-path.background {
+  stroke: #f7faff;
+  stroke-width: 6;
+  fill: none;
+}
 
-  .tag-connector-path {
-    stroke-width: 2;
-    fill: none;
-  }
+/* Tag Label Background (Main pill) */
+.tag-label-path {
+  stroke: var(--stroke);
+  stroke-width: 2.2;
+  filter: drop-shadow(0 3px 8px #6ed1e744);
+}
+.selectable .tag-label-path:not(.country) {
+  cursor: pointer;
+}
+.selectable .tag-label-path:not(.country):hover {
+  stroke: #0582ca;
+  filter: drop-shadow(0 6px 16px #2196f366);
+}
+.tag-label-path.background {
+  stroke: #e0f7fa;
+  stroke-width: 7;
+  fill: none;
+}
 
-  .tag-connector-path.background {
-    stroke: var(--background);
-    stroke-width: 4;
-    fill: none;
-  }
+/* Tag Glassy Gradient Fill */
+.tag-label-path.country,
+.tag-label-path:not(.background) {
+  fill: url(#tagLabelGradient);
+  opacity: 0.97;
+}
 
-  .tag-label-path {
-    stroke: var(--stroke);
-    stroke-width: 2;
-  }
+svg defs {
+  /* No direct effect, but for reference */
+}
 
-  .selectable .tag-label-path:not(.country) {
-    cursor: pointer;
-  }
+text {
+  font-family: var(--primFont, 'Inter', 'Segoe UI', Arial, sans-serif);
+  text-shadow: 0 2px 10px #f7faffcc, 0 2px 8px #6ed1e755;
+}
 
-  .selectable .tag-label-path:not(.country):hover {
-    stroke: var(--darkgray);
-  }
+.tag-text-category {
+  font-size: 0.89rem;
+  fill: #aee9f8;
+  font-weight: 500;
+  opacity: 0.94;
+  letter-spacing: 0.015em;
+  filter: blur(0.15px);
+}
 
-  .tag-label-path.background {
-    stroke: var(--background);
-    stroke-width: 4;
-  }
+.tag-text-name-cluster {
+  fill: #fff;
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 10px #0093e977, 0 4px 22px #fff8;
+}
 
-  text {
-    font-family: var(--primFont);
-  }
+.tag-text-name-cluster-countries {
+  fill: #d2f0fc;
+  font-size: 0.93rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  opacity: 0.94;
+}
 
-  .tag-text-category {
-    font-size: 0.8rem;
-  }
-
-  .tag-text-name-cluster {
-    fill: #fff;
-    font-size: 1rem;
-  }
-
-  .tag-text-name-cluster-countries {
-    fill: var(--lightgray);
-    font-size: 0.8rem;
-  }
+/* Add a gentle scale and glow on hover */
+g.tag-label.selectable:hover .tag-label-path:not(.background) {
+  filter: drop-shadow(0 7px 22px #2196f366) blur(0.5px);
+  opacity: 1;
+  transition: filter 0.18s, opacity 0.15s;
+}
+g.tag-label.selectable:hover .tag-text-name-cluster {
+  fill: #f1fcff;
+  text-shadow: 0 3px 18px #80d0c7;
+}
 </style>

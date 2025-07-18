@@ -1,5 +1,6 @@
 <script>
-  import { slide } from 'svelte/transition';
+  // import { slide } from 'svelte/transition';
+  import { slide, fade, scale } from 'svelte/transition';
 
   import {
     countryFilter,
@@ -283,12 +284,10 @@
 </script>
 
 <div
-  class="filter-bar"
+  class="filter-bar-top"
   use:css={{maxColumns, halfMaxColumns: Math.ceil(maxColumns / 2)}}
 >
-  <FilterTitle
-    label="Filters"
-  />
+  <FilterTitle label="Filters" />
   <div class="standard grid-container">
     {#each dropdownsTop as { id, filter, label, fullRollup, rollup, info, shortCuts } (id)}
       <Dropdown
@@ -303,17 +302,13 @@
         showClickHint={`${$isVertical ? 'Tap' : 'Click'} to filter`}
       />
     {/each}
-    <div class="share-panel">
-    </div>
+    <div class="share-panel"></div>
     <div class="logo">
       <Logo />
     </div>
   </div>
 
-  <div
-    class="extra grid-container"
-    transition:slide
-  >
+  <div class="extra grid-container" transition:slide>
     {#each dropdownsBottom as { id, filter, label, fullRollup, rollup, info } (id)}
       <Dropdown
         filter={filter}
@@ -328,91 +323,135 @@
     {/each}
   </div>
 
-
   <FilterTitle
-    label="Additional filters"
-    expandable
-    bind:expanded={extraFiltersGeoExpanded}
+  label="More filters"
+  expandable
+  bind:expanded={extraFiltersGeoExpanded}
+  class="fancy-more-filters-btn"
   />
-  {#if (extraFiltersGeoExpanded)}
-    <div
-      class="extra grid-container"
-      transition:slide
-    >
-      {#each dropdownsBottomExtra as { id, filter, label, fullRollup, rollup, info } (id)}
-        <Dropdown
-          filter={filter}
-          label={label}
-          fullRollup={fullRollup}
-          rollup={rollup}
-          info={info}
-          tooltip={tooltip}
-          showReset
-          showClickHint={`${$isVertical ? 'Tap' : 'Click'} to filter`}
-        />
-      {/each}
+  {#if extraFiltersGeoExpanded}
+  <div transition:slide>
+    <div transition:fade>
+      <div class="extra grid-container">
+        {#each dropdownsBottomExtra as { id, filter, label, fullRollup, rollup, info } (id)}
+          <Dropdown
+            filter={filter}
+            label={label}
+            fullRollup={fullRollup}
+            rollup={rollup}
+            info={info}
+            tooltip={tooltip}
+            showReset
+            showClickHint={`${$isVertical ? 'Tap' : 'Click'} to filter`}
+          />
+        {/each}
+      </div>
     </div>
-  {/if}
+  </div>
+{/if}
 </div>
 
 <style>
-  .filter-bar {
-    width: 100%;
-    padding: 1rem 0;
-  }
+ .filter-bar-top {
+  width: 100%;
+  padding: 2.1rem 0 1.3rem 0;
+  background: linear-gradient(90deg, #f7faff 0%, #c9e7fa 50%, #aee9f8 100%);
+  border-radius: 2.7em;
+  box-shadow: 0 8px 32px 0 rgba(80,200,250,0.10), 0 2px 16px #c9e7fa44;
+  margin: 1.3em 0 2.5em 0;
+  transition: background 0.25s;
+  position: relative;
+}
 
+.grid-container {
+  display: grid;
+  width: 100%;
+  padding: 0.7rem 2.2rem;
+  grid-template-columns: repeat(1, 1fr);
+  column-gap: 1.1rem;
+  row-gap: 1.1rem;
+  align-items: stretch;
+  justify-items: stretch;
+  justify-content: end;
+}
+
+.grid-container.standard {
+  grid-template-columns: 1fr;
+}
+
+.share-panel, .logo {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  .share-panel {
+    display: block;
+  }
+  .logo {
+    justify-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 600px) {
   .grid-container {
-    display: grid;
-    width: 100%;
-    padding: 0rem 1rem;
-    grid-template-columns: repeat(1, 1fr);
-    column-gap: 0.3rem;
-    row-gap: 0.3rem;
-    align-items: stretch;
-    justify-items: stretch;
-    justify-content: end;
+    grid-template-columns: repeat(var(--halfMaxColumns), 1fr);
   }
-
   .grid-container.standard {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
-  .share-panel, .logo {
-    display: none;
+@media (min-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(var(--maxColumns), 1fr);
   }
-
-  /* last modif to fix bug */
-  @media (min-width: 1000px) {
-    .share-panel {
-      display: block;
-    }
-
-    .logo {
-      justify-self: flex-end;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .grid-container.standard {
+    grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  @media (min-width: 600px) {
-    .grid-container {
-      grid-template-columns: repeat(var(--halfMaxColumns), 1fr);
-    }
-
-    .grid-container.standard {
-      grid-template-columns: repeat(2, 1fr);
-    }
+@media (max-width: 900px) {
+  .filter-bar-top {
+    border-radius: 1.4em;
+    padding: 1.1rem 0 1rem 0;
   }
-
-  /* last modif to fix bug */
-  @media (min-width: 1000px) {
-    .grid-container {
-      grid-template-columns: repeat(var(--maxColumns), 1fr);
-    }
-
-    .grid-container.standard {
-      grid-template-columns: repeat(4, 1fr);
-    }
+  .grid-container {
+    padding: 0.6rem 0.4rem;
+    column-gap: 0.7rem;
+    row-gap: 0.7rem;
   }
+}
+.fancy-more-filters-btn button,
+:global(.filter-title.expandable button) {
+  background: linear-gradient(90deg, #aee9f8 0%, #6ed1e7 100%);
+  color: #1b4965;
+  border: none;
+  border-radius: 2em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.7em 2.2em;
+  box-shadow: 0 6px 24px #aee9f833, 0 1px 4px #6ed1e722;
+  transition: 
+    background 0.22s, 
+    color 0.13s, 
+    box-shadow 0.19s, 
+    transform 0.13s;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  outline: none;
+  margin: 1em 0 0.5em 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fancy-more-filters-btn button:hover,
+:global(.filter-title.expandable button:hover) {
+  background: linear-gradient(90deg, #6ed1e7 0%, #aee9f8 100%);
+  color: #0b2c43;
+  box-shadow: 0 12px 32px #6ed1e744, 0 3px 12px #aee9f844;
+  transform: scale(1.045);
+}
 </style>

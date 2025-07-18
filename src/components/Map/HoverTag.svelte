@@ -199,61 +199,90 @@
 
 <style>
   g {
-    user-select: none;
-    pointer-events: none;
-  }
+  user-select: none;
+  pointer-events: none;
+}
 
-  g.tag-label {
-    pointer-events: all;
-  }
+g.tag-label {
+  pointer-events: all;
+}
 
-  .background {
-    fill: none;
-  }
+/* Connector Path Styles */
+.tag-connector-path {
+  stroke-width: 2.3;
+  fill: none;
+  filter: drop-shadow(0 2px 8px #7bdff2cc);
+}
 
-  g.shadow-hover-tag {
-    visibility: hidden;
-  }
+.tag-connector-path.background {
+  stroke: #f7faff;
+  stroke-width: 6;
+  fill: none;
+}
 
-  .tag-connector-path {
-    stroke-width: 2;
-    fill: none;
-  }
+/* Tag Label Path as a Glassy/Colorful Pill */
+.tag-label-path {
+  stroke: var(--stroke);
+  stroke-width: 2.3;
+  fill: #6ed1e7;   /* Fallback: a nice blue-teal */
+  filter: drop-shadow(0 4px 14px #aee9f855);
+  opacity: 0.98;
+  transition: filter 0.16s, stroke 0.14s, fill 0.18s;
+}
+.selectable .tag-label-path:not(.country) {
+  cursor: pointer;
+}
+.selectable .tag-label-path:not(.country):hover {
+  stroke: #0093e9;
+  fill: #aee9f8;  /* Lighter on hover */
+  filter: drop-shadow(0 8px 24px #00b4d888);
+}
 
-  .tag-connector-path.background {
-    stroke: var(--background);
-    stroke-width: 4;
-    fill: none;
-  }
+.tag-label-path.background {
+  stroke: #e0f7fa;
+  stroke-width: 7;
+  fill: none;
+}
 
-  .tag-label-path {
-    stroke: var(--stroke);
-    stroke-width: 2;
-  }
+/* Text styling */
+text {
+  font-family: var(--primFont, 'Inter', 'Segoe UI', Arial, sans-serif);
+  text-shadow: 0 2px 12px #f7faffcc, 0 1px 3px #fff8;
+  transition: fill 0.13s, text-shadow 0.15s;
+}
 
-  .selectable .tag-label-path:not(.country) {
-    cursor: pointer;
-  }
+.tag-text-category {
+  font-size: 0.94rem;
+  fill: #2274a5;
+  font-weight: 700;
+  opacity: 0.93;
+  letter-spacing: 0.025em;
+}
 
-  .selectable .tag-label-path:not(.country):hover {
-    stroke: var(--darkgray);
-  }
+.tag-text-name {
+  fill: #fff;
+  font-size: 1.14rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 10px #0093e977, 0 4px 22px #fff7;
+}
 
-  .tag-label-path.background {
-    stroke: var(--background);
-    stroke-width: 4;
-  }
+g.tag-label.selectable:hover .tag-label-path:not(.background) {
+  filter: drop-shadow(0 12px 34px #0093e988) blur(0.2px);
+  opacity: 1;
+}
 
-  text {
-    font-family: var(--primFont);
-  }
+g.tag-label.selectable:hover .tag-text-name {
+  fill: #e7faff;
+  text-shadow: 0 3px 18px #80d0c7;
+}
 
-  .tag-text-category {
-    font-size: 0.8rem;
-  }
+g.tag-label.selectable:active .tag-label-path:not(.background) {
+  fill: #00b4d8;
+  stroke: #2274a5;
+}
 
-  .tag-text-name {
-    fill: var(--darkgray);
-    font-size: 1rem;
-  }
+g.tag-label.selectable:active .tag-text-name {
+  fill: #b9f3fc;
+}
 </style>
