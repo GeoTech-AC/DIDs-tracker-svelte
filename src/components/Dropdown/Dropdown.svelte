@@ -4,6 +4,11 @@
   import { areAllSelected, hasOverlap } from "../../utils/logic";
   import { questionMark } from '../../utils/icons';
   import { getCoords } from '../../utils/misc';
+  import { statusRenameDict } from '../../utils/levels';
+
+  function getDisplayStatus(status) {
+    return statusRenameDict[status] || status;
+  }
   
   import Icon from 'svelte-awesome';
   import Chip from './Chip.svelte';
@@ -149,7 +154,7 @@
         <li>
           <Chip
             id={id}
-            name={name}
+            name={getDisplayStatus(name)}
             on:close={() => handleSuggestionSelect(id)}
           />
         </li>
@@ -177,7 +182,7 @@
       <ul class="suggestions">
         {#each suggestions as { id, name, type }, i (id)}
           <Suggestion
-            name={name}
+            name={getDisplayStatus(name)}
             fullRollup={fullRollup.find(d => d.name === name)}
             rollup={rollup.find(d => d.name === name)}
             bold={type && type === 'shortcut'}
@@ -292,9 +297,9 @@
   width: 100%;
   min-height: var(--inputHeight);
   height: auto;
-  background: linear-gradient(90deg, #a093e9 0%, #d0d0c7 100%);
+  background: linear-gradient(90deg, #e3f2fd 0%, #f7faff 100%);
   border-radius: 2em;
-  box-shadow: 0 4px 16px 0 rgba(0,147,233,0.13), 0 2px 8px #80d0c733;
+  box-shadow: 0 4px 16px 0 #b6e0fe33, 0 2px 8px #e3f2fd33;
   transition: background 0.28s, box-shadow 0.21s, transform 0.18s;
   cursor: pointer;
   display: flex;
@@ -304,7 +309,7 @@
   border: none;
   outline: none;
   font-weight: 600;
-  color: #fff;
+  color: #196aa5;
   font-size: 1.1rem;
   letter-spacing: 0.01em;
 }
@@ -349,63 +354,62 @@
   position: absolute;
   z-index: 10000;
   width: 100%;
-  background: linear-gradient(135deg, #8056d3 0%, #6b73ff 100%);
+  background: linear-gradient(120deg, #f7faff 70%, #e3f2fd 100%);
   border-radius: 1.3em;
-  box-shadow: 0 8px 32px 0 rgba(48,86,211,0.22), 0 1.5px 7px #6b73ff44;
+  box-shadow: 0 8px 32px 0 #b6e0fe33, 0 1.5px 7px #e3f2fd66;
   margin-top: 0.4em;
   padding: 1.1em 0.5em 0.6em 0.5em;
-  color: #09fafe;
-  border: 1.5px solid #385ae0;
+  color: #234;
+  border: 1.5px solid #c4e0ec;
 }
 
 /* The suggestions input bar (search box) */
 .suggestions input {
-  background: #f9fafe;
-  color: #3056d3;
-  border: 2px solid #6b73ff;
+  background: #fff;
+  color: #196aa5;
+  border: 2px solid #aee9f8;
   border-radius: 1em;
   font-size: 1.08rem;
   margin-bottom: 0.65em;
   padding: 0.6em 1em;
   outline: none;
   font-weight: 500;
-  box-shadow: 0 1px 6px 0 #30456d19;
+  box-shadow: 0 1px 6px 0 #c9e7fa44;
 }
 
-/* Suggestions list (no transparency) */
+/* Suggestions list (ul) */
 .suggestions ul {
-  background-color: lightseagreen;
+  background: transparent;
   border-radius: 1em;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-/* Each suggestion item (li) - solid background */
-.suggestions ul li, .suggestion {
-  background: #4356e4; /* SOLID, deep blue */
+/* Each suggestion item (li) - light background */
+.suggestions ul li {
+  background: #39f5fc;
   padding: 0.55em 1.2em;
   margin: 0.17em 0;
   border-radius: 0.95em;
-  color: #f9fafe;
+  color: #196aa5;
   font-size: 1.08rem;
   cursor: pointer;
-  transition: background 0.18s, color 0.11s, box-shadow 0.16s;
+  transition: background 0.17s, color 0.11s, box-shadow 0.14s;
   border: none;
 }
 
-.suggestions ul li:hover, .suggestion:hover,
-.suggestions ul li.isActive, .suggestion.isActive {
-  background: linear-gradient(90deg, #6b73ff 0%, #3056d3 100%);
-  color: #fff;
-  box-shadow: 0 2px 12px 0 #3056d344;
+.suggestions ul li:hover {
+  background: linear-gradient(90deg, #e3f2fd 0%, #b3e0ff 100%);
+  color: #134166;
+  box-shadow: 0 2px 12px 0 #aee9f855;
   font-weight: 600;
   transform: scale(1.035);
 }
 
-.suggestions ul li:active, .suggestion:active {
-  background: #3046b2;
-  color: #d7eaff;
+.suggestions ul li:active {
+  background: #59e7fa;
+  color: #196aa5;
   transform: scale(0.99);
 }
 

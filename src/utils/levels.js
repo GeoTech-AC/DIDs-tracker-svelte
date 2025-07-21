@@ -1,14 +1,34 @@
 export const statusColors = [
-'#F98E85',  // Coral Red
-'#7D6AB2',  // Lavender Indigo
-'#A8C9A0',  // 	Sage Green
-'#F4D6D9',  // Soft Blush Pink
-'#B4D4E3',  // Mist Blue
-'#A97C82',  // Dusty Mauve
+'#F3B100',  // Golden Yellow
+'#E79A38',  // Amber Orange
+'#A1D5A4',  // 	Mint Green
+'#3AB4A2',  // Teal Blue
+'#276955',  // Deep Forest Green
+'#124074',  // Navy Blue
 '#FFD662',  // Lemon Yellow
 '#034F84',  // Ocean Blue
 '#B565A7',  // Orchid Purple
 ];
+
+
+// Status Legend Rename Dictionary
+export const statusRenameDict = {
+  "Launched": "Operational",
+  "Pilot": "Pilot",
+  "Development": "In Design Phase",
+  "Research": "Scoping",
+  "Inactive": "Dormant",
+  "Canceled": "Discontinued"
+};
+
+// If you want to rename the legend heading itself:
+export const legendRenameDict = {
+  "legend": "Status Legend" // Replace with your preferred name
+};
+
+function getDisplayStatus(status) {
+  return statusRenameDict[status] || status;
+}
 
 export const statusLevels = [
   {

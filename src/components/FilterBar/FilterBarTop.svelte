@@ -1,6 +1,12 @@
 <script>
   // import { slide } from 'svelte/transition';
   import { slide, fade, scale } from 'svelte/transition';
+  import { statusRenameDict } from '../../utils/levels';
+
+  function getDisplayStatus(status) {
+    return statusRenameDict[status] || status;
+  }
+  
 
   import {
     countryFilter,

@@ -169,6 +169,7 @@
         {:else}
           <text
             class="tag-text-name-cluster"
+            background="#000"
             text-anchor="{tag.direction === 1 ? 'start' : 'end'}"
             dx={labelArrowWidth * tag.direction}
             dy={tag.textNameYOffset}
@@ -254,7 +255,7 @@ text {
 }
 
 .tag-text-name-cluster {
-  fill: #fff;
+  fill: #333333;
   font-size: 1.22rem;
   font-weight: 800;
   letter-spacing: 0.01em;

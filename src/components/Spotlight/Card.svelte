@@ -1,16 +1,20 @@
 <script>
   import { orderBy } from 'lodash-es';
   import { css } from '../../actions/css';
+  import { statusRenameDict } from '../../utils/levels.js';
 
   export let datum;
+
+  function getDisplayStatus(status) {
+    return statusRenameDict[status] || status;
+  }
 
   $: categories = orderBy(Object.keys(datum.categories).map(key => {
     return {
       category: key,
       ...datum.categories[key]
     };
-  }),
-  'filterable', 'desc');
+  }), 'filterable', 'desc');
 </script>
 
 <div class="spotlight-card">
@@ -42,7 +46,9 @@
           use:css={{chipColor: cat.color}}
         >
           <span class="card-cat-title">{cat.title}</span>
-          <span class="chip">{cat.name}</span>
+          <span class="chip">
+            {getDisplayStatus(cat.name)}
+          </span>
         </div> 
       </div>
     {/each}

@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import { fade, draw } from 'svelte/transition';
+  import { statusRenameDict } from '../../utils/levels.js';
 
   import { tagConnectorPath, tagLabelPath } from '../../utils/paths';
 
@@ -31,6 +32,12 @@
       name
     });
   }
+
+
+  function getDisplayStatus(status) {
+  return statusRenameDict[status] || status;
+}
+
 
   $: tags = [
     {
@@ -122,7 +129,7 @@
       class="tag-text-name"
       bind:this={textNameElems[i]}
     >
-      {tag.name}
+    {getDisplayStatus(tag.name)}
     </text>
   {/each}
 </g>
@@ -184,8 +191,8 @@
           dx={labelArrowWidth * tag.direction}
           dy={tag.textNameYOffset}
         >
-          {tag.name}
-        </text>
+        {tag.category === 'new_status' ? getDisplayStatus(tag.name) : tag.name}
+      </text>
       </g>
     </g>
   {/each}
@@ -194,7 +201,7 @@
   dataCountry={data}
   color={data.categories.new_status.color}
   isReactive={false}
-  inverted={data.status === 'region'}
+  inverted={getDisplayStatus(data.status) === 'region'}
 />
 
 <style>

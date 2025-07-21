@@ -12,6 +12,8 @@
   import { fullStatusRollup, statusRollup, totalCountries } from '../../stores/aggregation';
   import { isVertical } from '../../stores/device';
   import styles from '../../utils/styles';
+  import { statusRenameDict } from '../../utils/levels.js';
+
 
   import Navigation from './Navigation.svelte';
   import ResetFilters from './ResetFilters.svelte';
@@ -22,6 +24,11 @@
   import HoverTag from './HoverTag.svelte';
   import HoverTagCluster from './HoverClusterTag.svelte';
   import GestureNote from './GestureNote.svelte';
+
+
+  function getDisplayStatus(status) {
+    return statusRenameDict[status] || status; // fallback to original if not in dictionary
+  }
 
   const clusterZoom = 4;
   
@@ -201,10 +208,10 @@
       <Country
         path={country.path}
         color={$data.find(d => d.name.name === country.name)?.categories[$colorCategory].color}
-        strokeColor={styles.gray}
+        strokeColor="#E3E3E3"
         fallbackFillColor={styles.lightgray}
         fillOpacity={$data.find(d => d.name.name === country.name)?.show ? 1.0 : 0.1}
-        mode={country.status === 'country' ? 'area' : 'stroke'}
+        mode={getDisplayStatus(country.status) === 'country' ? 'area' : 'stroke'}
       />
     {/each}
   </Canvas>
@@ -219,9 +226,9 @@
           dataCountry={country}
           radius={centroidRadius}
           color={country.categories[$colorCategory].color}
-          opacity={country.show ? 1 : 0}
+          opacity={country.show ? 1 : 0.5}
           isReactive={country.show}
-          inverted={country.status === 'region'}
+          inverted={getDisplayStatus(country.status) === 'region'}
           offset={$mapTransform.k > $initialTransform.k * clusterZoom ? [0, 0] : country.offset}
           on:mouseenter={(e) => handleCentroidMouseEnter(e, country.id)}
           on:mouseleave={(e) => handleCentroidMouseLeave(e, country.id)}
@@ -291,7 +298,8 @@
   height: 180vw;
   overflow: hidden;
   border-top: 1px dashed var(--gray);
-  background: linear-gradient(120deg, #f7faff 0%, #e0f7fa 100%);
+  /* background: linear-gradient(120deg, #FCF9F3 0%, #e0f7fa 100%); */
+  background: #FCF9F3;
 }
   @media (min-width: 600px) {
     .map {

@@ -2,6 +2,7 @@ import { readable, writable, derived } from 'svelte/store';
 import { zoomIdentity, geoEqualEarth, geoPath } from 'd3';
 import { feature, merge } from 'topojson-client';
 import geojsonRewind from '@mapbox/geojson-rewind';
+import { statusRenameDict } from '../utils/levels.js';
 
 import { isVertical } from './device';
 import { loadJson, loadCapitals } from '../utils/load';
@@ -12,6 +13,10 @@ const sphere = { type: 'Sphere' };
 const worldDataPath = 'data/countries-topo.json'; // https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json
 const specialDataPath = 'data/countries-special.json';
 const capitalDataPath = 'data/capitals.csv';
+
+function getDisplayStatus(status) {
+  return statusRenameDict[status] || status;
+}
 
 const features = readable([], async (set) => {
   const world = await loadJson(worldDataPath);
@@ -127,7 +132,7 @@ export const projectedData = derived([features, path], ([$features, $path]) => {
     const projected = {
       id: i,
       name: d.properties.name,
-      status: d.status,
+      status: getDisplayStatus(d.status),
       path: $path(d),
       centroid,
       isClusterMember: d.isClusterMember,

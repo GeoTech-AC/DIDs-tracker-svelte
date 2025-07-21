@@ -4,7 +4,7 @@
 
   export let path = 'M0 0';
   export let color = '#FFFFFF';
-  export let strokeColor = '#000000';
+  export let strokeColor = '#000';
   export let fallbackFillColor = '#FFFFFF';
   export let fillOpacity = 1.0;
   export let mode = 'area';
@@ -16,26 +16,26 @@
     duration: 200
   });
 
-  function draw(ctx) {
-    ctx.fillStyle = color ? color : fallbackFillColor;
-    ctx.strokeStyle = mode === 'stroke' && color ? color : strokeColor;
-    ctx.lineWidth = mode === 'stroke' ? 5 : 1;
-    
-    const p = new Path2D(path);
-    ctx.beginPath();
+ function draw(ctx) {
+  ctx.fillStyle = color ? color : fallbackFillColor;
+  ctx.strokeStyle = mode === 'stroke' && color ? color : strokeColor;
+  ctx.lineWidth = mode === 'stroke' ? 5 : 2;   // <--- increased line widths
 
-    ctx.globalAlpha = $tFillOpacity;
-    if (mode === 'area') ctx.fill(p);
+  const p = new Path2D(path);
+  ctx.beginPath();
 
-    ctx.globalAlpha = mode === 'area' ? 1.0 : $tFillOpacity;
+  ctx.globalAlpha = $tFillOpacity;
+  if (mode === 'area') ctx.fill(p);
+
+  ctx.globalAlpha = mode === 'area' ? 1.0 : $tFillOpacity;
+  ctx.stroke(p);
+
+  if (mode === 'stroke') {
+    ctx.strokeStyle = fallbackFillColor;
+    ctx.lineWidth = 5;  // <--- thicker fallback for regions
     ctx.stroke(p);
-
-    if (mode === 'stroke') {
-      ctx.strokeStyle = fallbackFillColor;
-      ctx.lineWidth = 2;
-      ctx.stroke(p);
-    }
   }
+}
 
   onMount(() => {
     register(draw);

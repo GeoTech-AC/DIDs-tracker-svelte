@@ -2,6 +2,7 @@
   import { createEventDispatcher } from 'svelte';
   import { fade } from 'svelte/transition';
   import { orderBy } from 'lodash-es';
+  import { statusRenameDict } from '../../utils/levels';
 
   import { isVertical } from '../../stores/device';
   import { css } from '../../actions/css';
@@ -11,6 +12,14 @@
 
   export let datum;
 
+  function handleClick(id) {
+    statusFilter.click(id);
+  }
+
+  function getDisplayStatus(status) {
+    return statusRenameDict[status] || status;
+  }
+  
   const dispatch = createEventDispatcher();
 
   let showOverlayCloseButton = false;
@@ -102,10 +111,11 @@
                   class="chip"
                   on:click={() => handleCategoryClick(cat.category, cat.name)}
                 >
-                  {cat.name}
+                {getDisplayStatus(cat.name)}
                 </button>
               {:else}
-                <span>{cat.name}</span>
+                <span>{getDisplayStatus(cat.name)}
+                </span>
               {/if}
             </div>
           {/each}

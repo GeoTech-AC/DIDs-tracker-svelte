@@ -1,6 +1,7 @@
 <script>
   import { isVertical } from '../../stores/device';
   import { countryGroups } from '../../utils/geo';
+  import { statusRenameDict } from '../../utils/levels';
 
   import Dropdown from '../Dropdown/Dropdown.svelte';
 
@@ -14,6 +15,10 @@
     statusFilter.click(id);
   }
 
+  function getDisplayStatus(status) {
+    return statusRenameDict[status] || status;
+  }
+  
   $: data = $statusFilter.map(item => {
     const fullR = $fullStatusRollup.find(d => d.name === item.name);
     const { n = 0 } = $statusRollup.find(d => d.name === item.name) || {};
@@ -58,7 +63,7 @@
             {n ? n : ''}
           </span>
           <span class="name">
-            {name}
+            {getDisplayStatus(name)}
           </span>
         </li>
       {/each}
@@ -69,8 +74,8 @@
 <style>
  .legend {
   position: absolute;
-  right: 0;
-  left: auto;
+  right: auto;
+  left: 0;
   top: auto;
   bottom: 0;
   z-index: 800;
@@ -80,7 +85,9 @@
   color: #234;
   font-family: var(--primFont, 'Inter', 'Segoe UI', Arial, sans-serif);
   font-size: 1.03rem;
-  background: linear-gradient(135deg, #f7faff 60%, #e3f2fd 100%);
+  /* background: linear-gradient(135deg, #f7faff 60%, #e3f2fd 100%); */
+  background: #FFFFFF;
+  color: #333333;   
   border-radius: 1.4em 1.4em 0 0;
   box-shadow: 0 10px 32px 0 #6ed1e744, 0 1.5px 10px #aee9f844;
   border: 1.5px solid #c4e0ec;
@@ -115,7 +122,7 @@
 h5 {
   margin: 0.3rem 0.5rem;
   font-size: 0.96rem;
-  color: #1b4965;
+  color: #333333;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
@@ -186,14 +193,14 @@ li:hover, li.inactive:hover {
   margin: 0 0.28rem 0 0.15rem;
   font-size: 0.98rem;
   text-align: right;
-  color: #0093e9;
+  color: #333333;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 .name {
   margin-left: 0.1rem;
-  color: #234;
+  color: #333333;
   font-weight: 600;
   font-size: 1.04rem;
 }
