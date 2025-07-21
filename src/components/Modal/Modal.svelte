@@ -373,7 +373,7 @@
   transition: background 0.18s, color 0.13s;
 }
 .chip {
-  background: linear-gradient(90deg, var(--chipColor, #2196f3) 40%, #00b4d8 100%);
+  background: linear-gradient(90deg, var(--chipColor, #b196f3) 40%, #c9c4d8 100%);
   color: #fff;
   margin-left: 0.4em;
 }
