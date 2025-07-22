@@ -257,7 +257,8 @@
   }
 
   label button, .suggestions input {
-    background: linear-gradient(90deg, #80d0c7 0%, #0093e9 100%);
+    /* background: linear-gradient(90deg, #80d0c7 0%, #0093e9 100%); */
+    background: #82eeff;
     color: #fff;
     border-radius: 1em;
     border: none;
@@ -265,8 +266,9 @@
     transition: background 0.22s, color 0.12s;
   }
   label button:hover, .suggestions input:focus {
-    background: linear-gradient(90deg, #0093e9 0%, #80d0c7 100%);
-    color: #fff;
+    /* background: linear-gradient(90deg, #0093e9 0%, #80d0c7 100%); */
+    background: #82eeff;
+    color: #000;
   }
  
   /* Style only the Reset button */
@@ -297,7 +299,8 @@
   width: 100%;
   min-height: var(--inputHeight);
   height: auto;
-  background: linear-gradient(90deg, #e3f2fd 0%, #f7faff 100%);
+  /* background: linear-gradient(90deg, #e3f2fd 0%, #f7faff 100%); */
+  background: #e3f2fd;
   border-radius: 2em;
   box-shadow: 0 4px 16px 0 #b6e0fe33, 0 2px 8px #e3f2fd33;
   transition: background 0.28s, box-shadow 0.21s, transform 0.18s;
@@ -354,13 +357,16 @@
   position: absolute;
   z-index: 10000;
   width: 100%;
-  background: linear-gradient(120deg, #f7faff 70%, #e3f2fd 100%);
+  /* 50% transparent very light blue */
+  background: rgba(205, 245, 254, 0.9);  /* #e1f5fe at 50% */
   border-radius: 1.3em;
   box-shadow: 0 8px 32px 0 #b6e0fe33, 0 1.5px 7px #e3f2fd66;
   margin-top: 0.4em;
   padding: 1.1em 0.5em 0.6em 0.5em;
   color: #234;
   border: 1.5px solid #c4e0ec;
+  /* Remove or comment out previous background lines if present */
+  /* background: linear-gradient(120deg, #f7faff 70%, #e3f2fd 100%); */
 }
 
 /* The suggestions input bar (search box) */
@@ -379,7 +385,8 @@
 
 /* Suggestions list (ul) */
 .suggestions ul {
-  background: transparent;
+  background: rgba(225, 245, 254, 0.9);  /* #e1f5fe at 90% */
+  /* background: transparent; */
   border-radius: 1em;
   padding: 0;
   margin: 0;
@@ -400,7 +407,8 @@
 }
 
 .suggestions ul li:hover {
-  background: linear-gradient(90deg, #e3f2fd 0%, #b3e0ff 100%);
+  /* background: linear-gradient(90deg, #e3f2fd 0%, #b3e0ff 100%); */
+  background: #e3f2fd;
   color: #134166;
   box-shadow: 0 2px 12px 0 #aee9f855;
   font-weight: 600;

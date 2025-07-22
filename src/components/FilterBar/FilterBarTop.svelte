@@ -361,7 +361,8 @@
  .filter-bar-top {
   width: 100%;
   padding: 2.1rem 0 1.3rem 0;
-  background: linear-gradient(90deg, #f7faff 0%, #c9e7fa 50%, #aee9f8 100%);
+  /* background: linear-gradient(90deg, #f7faff 0%, #c9e7fa 50%, #aee9f8 100%); */
+  background: #c9e7fa;
   border-radius: 2.7em;
   box-shadow: 0 8px 32px 0 rgba(80,200,250,0.10), 0 2px 16px #c9e7fa44;
   margin: 1.3em 0 2.5em 0;

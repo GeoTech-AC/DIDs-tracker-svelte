@@ -36,7 +36,7 @@
 >
   <div class="countries">
     <h5 class="total">
-      <span>{totalCountries}</span> Countr{totalCountries === 1 ? 'y' : 'ies'} / Identity Union{totalCountries === 1 ? '' : 's'} Tracked
+      <span>{totalCountries}</span> Countr{totalCountries === 1 ? 'y' : 'ies'} / Identity Union{totalCountries === 1 ? '' : 's'} Reported
     </h5>
     <Dropdown
       filter={countryFilter}
@@ -74,21 +74,22 @@
 <style>
  .legend {
   position: absolute;
-  right: auto;
   left: 0;
+  /* top: 50%;
+  transform: translateY(-50%); */
   top: auto;
-  bottom: 0;
+  bottom: bottom;
   z-index: 800;
-  width: 100%;
-  margin: 0;
+  width: 230px;
+  min-width: 230px;
+  max-width: 230px;
+  margin: 0 1.4rem;
   padding: 1.2rem 0.7rem 1.6rem 0.7rem;
-  color: #234;
+  color: #0492c2;
   font-family: var(--primFont, 'Inter', 'Segoe UI', Arial, sans-serif);
   font-size: 1.03rem;
-  /* background: linear-gradient(135deg, #f7faff 60%, #e3f2fd 100%); */
-  background: #FFFFFF;
-  color: #333333;   
-  border-radius: 1.4em 1.4em 0 0;
+  background: #FCF9F3;
+  border-radius: 0 1.3em 1.3em 0;
   box-shadow: 0 10px 32px 0 #6ed1e744, 0 1.5px 10px #aee9f844;
   border: 1.5px solid #c4e0ec;
   backdrop-filter: blur(5px);
@@ -107,8 +108,8 @@
 }
 @media (min-width: 1000px) {
   .legend {
-    top: 0;
-    bottom: auto;
+    top: auto; 
+    bottom: 0;
     border-radius: 0 1.3em 1.3em 0;
   }
 }
@@ -122,7 +123,7 @@
 h5 {
   margin: 0.3rem 0.5rem;
   font-size: 0.96rem;
-  color: #333333;
+  color: #0492c2;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
@@ -193,14 +194,14 @@ li:hover, li.inactive:hover {
   margin: 0 0.28rem 0 0.15rem;
   font-size: 0.98rem;
   text-align: right;
-  color: #333333;
+  color: #0492c2;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 .name {
   margin-left: 0.1rem;
-  color: #333333;
+  color: #0492c2;
   font-weight: 600;
   font-size: 1.04rem;
 }

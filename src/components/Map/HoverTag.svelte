@@ -24,6 +24,21 @@
   let textCategoryElems = [];
   let textNameElems = [];
 
+
+  function lightenColor(hex, percent) {
+  if (!hex) return '#ffffff';
+  hex = hex.replace(/^#/, '');
+  if (hex.length === 3) {
+    hex = hex.split('').map(x => x + x).join('');
+  }
+  const num = parseInt(hex, 16);
+  let r = (num >> 16) + Math.round( (255 - (num >> 16)) * percent );
+  let g = ((num >> 8) & 0x00FF) + Math.round( (255 - ((num >> 8) & 0x00FF)) * percent );
+  let b = (num & 0x0000FF) + Math.round( (255 - (num & 0x0000FF)) * percent );
+  r = Math.min(255, r); g = Math.min(255, g); b = Math.min(255, b);
+  return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, "0")}`;
+}
+
   function handleTagLabelClick(tag) {
     if (!tag.filterable) return;
     const { category, name } = tag;
@@ -164,12 +179,15 @@
         d={tagLabelPath(tag.x2, tag.y2, tag.x3, tag.y3, tag.x4, tag.y4, tag.x5, tag.y5, tag.x6, tag.y6, tag.direction * cornerRadius)}
       />
       <path
-        class="tag-label-path"
-        class:country={tag.category === 'name'}
-        d={tagLabelPath(tag.x2, tag.y2, tag.x3, tag.y3, tag.x4, tag.y4, tag.x5, tag.y5, tag.x6, tag.y6, tag.direction * cornerRadius)}
-        fill={tag.category === 'name' ? data.categories.new_status.color : 'var(--secWhite)'}
-        on:click={() => handleTagLabelClick(tag)}
-      />
+      class="tag-label-path"
+      class:country={tag.category === 'name'}
+      d={tagLabelPath(tag.x2, tag.y2, tag.x3, tag.y3, tag.x4, tag.y4, tag.x5, tag.y5, tag.x6, tag.y6, tag.direction * cornerRadius)}
+      fill={tag.category === 'name'
+        ? data.categories.new_status.color            // Same as circle for country name
+        : lightenColor(data.categories.new_status.color, 0.85)  
+      }
+      on:click={() => handleTagLabelClick(tag)}
+    />
       <g
         class="tag-label-content"
         transform="translate({tag.x2} {tag.y2})"
@@ -186,11 +204,12 @@
           </text>
         {/if}
         <text
-          class="tag-text-name"
-          text-anchor="{tag.direction === 1 ? 'start' : 'end'}"
-          dx={labelArrowWidth * tag.direction}
-          dy={tag.textNameYOffset}
-        >
+        class="tag-text-name"
+        text-anchor="{tag.direction === 1 ? 'start' : 'end'}"
+        dx={labelArrowWidth * tag.direction}
+        dy={tag.textNameYOffset}
+        fill={data.categories.new_status.color} 
+      >
         {tag.category === 'new_status' ? getDisplayStatus(tag.name) : tag.name}
       </text>
       </g>
@@ -231,7 +250,7 @@ g.tag-label {
 .tag-label-path {
   stroke: var(--stroke);
   stroke-width: 2.3;
-  fill: #6ed1e7;   /* Fallback: a nice blue-teal */
+  /* fill: #6ed1e7;    Fallback: a nice blue-teal */
   filter: drop-shadow(0 4px 14px #aee9f855);
   opacity: 0.98;
   transition: filter 0.16s, stroke 0.14s, fill 0.18s;
@@ -261,17 +280,17 @@ text {
 .tag-text-category {
   font-size: 0.94rem;
   fill: #2274a5;
-  font-weight: 700;
+  font-weight: 400;
   opacity: 0.93;
   letter-spacing: 0.025em;
 }
 
 .tag-text-name {
-  fill: #fff;
   font-size: 1.14rem;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.01em;
-  text-shadow: 0 2px 10px #0093e977, 0 4px 22px #fff7;
+  fill: inherit;    /* Use the fill from the Svelte attribute */
+  text-shadow: none;
 }
 
 g.tag-label.selectable:hover .tag-label-path:not(.background) {
