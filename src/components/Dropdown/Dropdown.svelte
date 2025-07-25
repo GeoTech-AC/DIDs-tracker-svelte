@@ -31,6 +31,7 @@
   let showSuggestions = false;
   let chips = [];
   let infoElem;
+  $: isScrollable = suggestions.length > 7;
 
   function handleInfo(show) {
     if (!info || !infoElem) return;
@@ -179,7 +180,7 @@
         on:click|stopPropagation
         use:setFocus
       />
-      <ul class="suggestions">
+      <ul class="suggestions-list" class:scrollable={isScrollable}>
         {#each suggestions as { id, name, type }, i (id)}
           <Suggestion
             name={getDisplayStatus(name)}
@@ -420,5 +421,28 @@
   color: #196aa5;
   transform: scale(0.99);
 }
+.suggestions-list {
+  max-height: none;
+  overflow-y: visible;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
+/* When there are more than 7, show scrollbar and limit height */
+.suggestions-list.scrollable {
+  max-height: 17em; /* Adjust as needed, roughly 7 items' height */
+  overflow-y: auto;
+}
+
+/* Optional: always show a nice custom scrollbar */
+.suggestions-list.scrollable::-webkit-scrollbar {
+  width: 0.6em;
+  background: #e3f2fd;
+  border-radius: 0.7em;
+}
+.suggestions-list.scrollable::-webkit-scrollbar-thumb {
+  background: #b6e0fe;
+  border-radius: 0.7em;
+}
 </style>

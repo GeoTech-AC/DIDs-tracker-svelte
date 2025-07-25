@@ -75,10 +75,10 @@
  .legend {
   position: absolute;
   left: 0;
-  /* top: 50%;
-  transform: translateY(-50%); */
-  top: auto;
-  bottom: bottom;
+  top: 50%;
+  transform: translateY(-50%);
+  /* top: auto;
+  bottom: bottom; */
   z-index: 800;
   width: 230px;
   min-width: 230px;
@@ -108,8 +108,8 @@
 }
 @media (min-width: 1000px) {
   .legend {
-    top: auto; 
-    bottom: 0;
+    /* top: auto; 
+    bottom: 0; */
     border-radius: 0 1.3em 1.3em 0;
   }
 }

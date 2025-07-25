@@ -302,8 +302,6 @@ export const inclusionLevels = [
 ];
 
 
-
-
 export const controversiesLevels = [
   {
     id: 0,
@@ -323,10 +321,14 @@ export const controversiesLevels = [
   },
   {
     id: 4,
-    name: 'None',
+    name: 'Bureaucratic',
   },
   {
     id: 5,
+    name: 'None',
+  },
+  {
+    id: 6,
     name: 'Undecided',
   }
 ];

@@ -236,6 +236,10 @@
         "definition": "Marginalized groups are systematically excluded."
       },
       {
+        "name": "Bureaucratic",
+        "definition": "Bureaucratic difficulties in getting an ID ."
+      },
+      {
         "name": "None / Not Reported",
         "definition": "No major controversies publicly documented."
       }
@@ -302,24 +306,24 @@
     "title": "The current stage of the national digital ID system.",
     "categories": [
       {
-        "name": "No Initiative / Inactive",
-        "definition": "No official announcement or steps taken by the government toward establishing a digital ID system."
-      },
-      {
-        "name": "Research",
-        "definition": "The government is studying digital ID feasibility, conducting stakeholder consultations, or drafting legal/policy frameworks."
-      },
-      {
-        "name": "Development",
-        "definition": "The government has moved beyond research and is actively building technical infrastructure, software, or legal mechanisms and early testing of a DID in controlled environments."
+        "name": "Operational",
+        "definition": "The digital ID system is officially deployed and in use by the general population or target groups."
       },
       {
         "name": "Pilot",
         "definition": "A small-scale trial or regional test is being conducted to evaluate the functionality of the digital ID system."
       },
       {
-        "name": "Launched",
-        "definition": "The digital ID system is officially deployed and in use by the general population or target groups."
+        "name": "In Design Phase",
+        "definition": "The government has moved beyond research and is actively building technical infrastructure, software, or legal mechanisms and early testing of a DID in controlled environments."
+      },
+      {
+        "name": "Scoping",
+        "definition": "The government is studying digital ID feasibility, conducting stakeholder consultations, or drafting legal/policy frameworks."
+      },
+      {
+        "name": "No Initiative / Inactive",
+        "definition": "No official announcement or steps taken by the government toward establishing a digital ID system."
       },
       {
         "name": "Canceled",

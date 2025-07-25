@@ -316,7 +316,8 @@
 .categories-wrapper {
   flex: 0 0 300px;
   padding: 0.7em 0.5em 1.2em 0.5em;
-  background: linear-gradient(120deg, #f0fbfe 75%, #f7faff 100%);
+  /* background: linear-gradient(120deg, #f0fbfe 75%, #f7faff 100%); */
+  background: #f0fbfe;
   border-radius: 1.5em;
   box-shadow: 0 2px 16px #aee9f822;
   text-align: left;
@@ -346,7 +347,8 @@
 .category {
   margin: 0.3rem 0;
   padding: 0.7rem 1.1rem;
-  background: linear-gradient(90deg, #c9e7fa 10%, #f0fbfe 100%);
+  /* background: linear-gradient(90deg, #c9e7fa 10%, #f0fbfe 100%); */
+  background: #c9e7fa;
   border-radius: 1.1em;
   box-shadow: 0 2px 10px #6ed1e722;
   transition: box-shadow 0.11s, background 0.12s;
@@ -373,12 +375,14 @@
   transition: background 0.18s, color 0.13s;
 }
 .chip {
-  background: linear-gradient(90deg, var(--chipColor, #b196f3) 40%, #c9c4d8 100%);
+  /* background: linear-gradient(90deg, var(--chipColor, #b196f3) 40%, #c9c4d8 100%); */
+  background: var(--chipColor, #b196f3);
   color: #fff;
   margin-left: 0.4em;
 }
 .chip:hover {
-  background: linear-gradient(90deg, #00b4d8 40%, var(--chipColor, #2196f3) 100%);
+  /* background: linear-gradient(90deg, #00b4d8 40%, var(--chipColor, #2196f3) 100%); */
+  background: #00b4d8;
   color: #e3f2fd;
 }
 
