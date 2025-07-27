@@ -36,21 +36,6 @@ export const fullCountryRollup = derived(scaledData, $scaledData => generateRoll
 
 export const fullUseCaseRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.use_case), useCaseLevels.map(d => d.name)));
 
-// export const fullTechnologyRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.technology)));
-
-// export const fullArchitectureRollup = derived(scaledData, $scaledData => generateRollup($scaledData.filter(d => ['Retail', 'Both'].includes(d.categories.use_case.name)).map(d => d.categories.architecture), architectureLevels.map(d => d.name)));
-export const fullArchitectureRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.architecture), architectureLevels.map(d => d.name)));
-
-export const fullInfrastructureRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.infrastructure), infrastructureLevels.map(d => d.name)));
-
-// export const fullAccessRollup = derived(scaledData, $scaledData => generateRollup($scaledData.filter(d => ['Retail', 'Both'].includes(d.categories.use_case.name)).map(d => d.categories.access), accessLevels.map(d => d.name)));
-export const fullAccessRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.access), accessLevels.map(d => d.name)));
-
-export const fullCorporatePartnershipRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.corporate_partnership)));
-
-export const fullCrossborderPartnershipsRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.crossborder_partnerships)));
-
-
 
 export const fullsystemNameRollup = derived(scaledData, $scaledData => generateRollup($scaledData.map(d => d.categories.system)));
 
@@ -84,24 +69,6 @@ export const statusRollup = derived(showData, $showData => generateRollup($showD
 export const countryRollup = derived(showData, $showData => generateRollup($showData.map(d => d.name)));
 
 export const useCaseRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.use_case)));
-
-// export const technologyRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.technology)));
-
-// export const architectureRollup = derived(showData, $showData => generateRollup($showData.filter(d => ['Retail', 'Both'].includes(d.categories.use_case.name)).map(d => d.categories.architecture)));
-export const architectureRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.architecture)));
-
-export const infrastructureRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.infrastructure)));
-
-// export const accessRollup = derived(showData, $showData => generateRollup($showData.filter(d => ['Retail', 'Both'].includes(d.categories.use_case.name)).map(d => d.categories.access)));
-export const accessRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.access)));
-
-export const corporatePartnershipRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.corporate_partnership)));
-
-export const crossborderPartnershipsRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.crossborder_partnerships)));
-
-// export const corporatePartnershipRollup = derived(showData, $showData => generateRollup($showData.filter(d => ['Retail', 'Both'].includes(d.categories.use_case.name)).map(d => d.categories.corporate_partnership)));
-
-// export const crossborderPartnershipsRollup = derived(showData, $showData => generateRollup($showData.filter(d => ['Retail', 'Both'].includes(d.categories.use_case.name)).map(d => d.categories.crossborder_partnerships)));
 
 
 export const systemNameRollup = derived(showData, $showData => generateRollup($showData.map(d => d.categories.system)));

@@ -1,7 +1,7 @@
 {
   "name": "did-tracker",
   "version": "0.1.0",
-  "author": "Matthias Stahl <matthias@higsch.com>",
+  "author": "Obaid Ullah Ahmad <Ouahmad@atlanticcouncil.org>",
   "private": true,
   "scripts": {
     "build": "rollup -c",

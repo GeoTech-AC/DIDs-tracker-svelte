@@ -2,14 +2,8 @@
   import { slide } from 'svelte/transition';
 
   import {
-    // corporatePartnershipFilter,
-    // crossborderPartnershipsFilter
    } from '../../stores/filter';
   import {
-    // fullCorporatePartnershipRollup,
-    // fullCrossborderPartnershipsRollup,
-    // crossborderPartnershipsRollup,
-    // corporatePartnershipRollup
    } from '../../stores/aggregation';
   import { categoryNameScale } from '../../stores/scales';
   import { isVertical } from '../../stores/device';
@@ -24,20 +18,6 @@
 
   $: dropdownsBottom = [
     // {
-    //   filter: crossborderPartnershipsFilter,
-    //   label: $categoryNameScale.crossborder_partnerships,
-    //   shortCuts: [],
-    //   fullRollup: $fullCrossborderPartnershipsRollup,
-    //   rollup: $crossborderPartnershipsRollup,
-    //   info: $definitions.crossborder_projets
-    // },
-    // {
-    //   filter: corporatePartnershipFilter,
-    //   label: $categoryNameScale.corporate_partnership,
-    //   shortCuts: [],
-    //   fullRollup: $fullCorporatePartnershipRollup,
-    //   rollup: $corporatePartnershipRollup,
-    //   info: $definitions.technology_partnerships
     // }
   ].map((d, i) => ({...d, id: i}));
 

@@ -61,58 +61,7 @@ export const statusLevels = [
   }
 ];
 
-export const accessLevels = [
-  {
-    id: 0,
-    name: 'Account',
-  },
-  {
-    id: 1,
-    name: 'Token',
-  },
-  {
-    id: 2,
-    name: 'Both',
-  },
-  {
-    id: 3,
-    name: 'Undecided',
-  }
-];
 
-export const infrastructureLevels = [
-  {
-    id: 0,
-    name: 'Conventional',
-  },
-  {
-    id: 1,
-    name: 'DLT',
-  },
-  {
-    id: 2,
-    name: 'Both',
-  },
-  {
-    id: 3,
-    name: 'Undecided',
-  }
-];
-
-export const architectureLevels = [
-  {
-    id: 0,
-    name: 'Direct',
-  },
-  {
-    id: 1,
-    name: 'Hybrid',
-  },
-  {
-    id: 2,
-    name: 'Undecided',
-  }
-];
 
 
 export const incomeLevels = [

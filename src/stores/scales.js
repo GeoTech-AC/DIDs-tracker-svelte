@@ -4,12 +4,6 @@ import { range, hcl } from 'd3';
 import {
   countryFilter,
   useCaseFilter,
-  // technologyFilter,
-  // architectureFilter,
-  // infrastructureFilter,
-  // accessFilter,
-  // corporatePartnershipFilter,
-  // crossborderPartnershipsFilter,
   systemNameFilter,
   incomeGroupFilter,
   authenticationMethodFilter,
@@ -39,12 +33,6 @@ export const categoryNameScale = writable({
   name: 'Country',
   new_status: 'DID Status',
   use_case: 'Purpose',
-  // technology: 'Technology',
-  // architecture: 'Architecture',
-  // infrastructure: 'Infrastructure',
-  // access: 'Access',
-  // corporate_partnership: 'Technology Partnerships',
-  // crossborder_partnerships: 'Crossborder Projects',
   system:    'System Name',
   income:   'Income Group',
   authentication:  'Authentication Method',
@@ -75,30 +63,6 @@ export const countryColorScale = derived(countryFilter, $countryFilter => {
 export const useCaseColorScale = derived(useCaseFilter, $useCaseFilter => {
   return generateHarmonicColorScale($useCaseFilter.map(d => d.name));
 });
-
-// export const technologyColorScale = derived(technologyFilter, $technologyFilter => {
-//   return generateHarmonicColorScale($technologyFilter.map(d => d.name));
-// });
-
-// export const architectureColorScale = derived(architectureFilter, $architectureFilter => {
-//   return generateHarmonicColorScale($architectureFilter.map(d => d.name));
-// });
-
-// export const infrastructureColorScale = derived(infrastructureFilter, $infrastructureFilter => {
-//   return generateHarmonicColorScale($infrastructureFilter.map(d => d.name));
-// });
-
-// export const accessColorScale = derived(accessFilter, $accessFilter => {
-//   return generateHarmonicColorScale($accessFilter.map(d => d.name));
-// });
-
-// export const corporatePartnershipScale = derived(corporatePartnershipFilter, $corporatePartnershipFilter => {
-//   return generateHarmonicColorScale($corporatePartnershipFilter.map(d => d.name));
-// });
-
-// export const crossborderPartnershipsScale = derived(crossborderPartnershipsFilter, $crossborderPartnershipsFilter => {
-//   return generateHarmonicColorScale($crossborderPartnershipsFilter.map(d => d.name));
-// });
 
 export const systemScale = derived(systemNameFilter, $systemNameFilter => {
   return generateHarmonicColorScale($systemNameFilter.map(d => d.name));

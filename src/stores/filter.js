@@ -6,9 +6,6 @@ import { areAllSelected, areAllUnselected } from '../utils/logic';
 import {
   statusLevels,
   useCaseLevels,
-  // accessLevels,
-  // infrastructureLevels,
-  // architectureLevels,
   incomeLevels,
   authenticationLevels,
   mediumLevels,
@@ -130,12 +127,6 @@ function createMultiFilter() {
 export const statusFilter = createMultiFilter();  // needed
 export const countryFilter = createMultiFilter();   // needed
 export const useCaseFilter = createMultiFilter();   // needed
-// export const technologyFilter = createMultiFilter();   // not needed
-// export const architectureFilter = createMultiFilter();    // not needed 
-// export const infrastructureFilter = createMultiFilter();   // not needed
-// export const accessFilter = createMultiFilter();   // not needed
-// export const corporatePartnershipFilter = createMultiFilter();   // not needed
-// export const crossborderPartnershipsFilter = createMultiFilter();   // not needed 
 export const systemNameFilter = createMultiFilter();
 export const incomeGroupFilter = createMultiFilter();
 export const authenticationMethodFilter = createMultiFilter();
@@ -153,15 +144,6 @@ export const initFilters = (data) => {
   statusFilter.init(statusLevels.map((d) => d.name).filter(d => d != "Other"));
   countryFilter.init(data, 'name');
   useCaseFilter.init(useCaseLevels.map((d) => d.name));
-  // technologyFilter.init(data, 'categories.technology');
-  // architectureFilter.init(architectureLevels.map((d) => d.name));
-  // infrastructureFilter.init(infrastructureLevels.map((d) => d.name));
-  // accessFilter.init(accessLevels.map((d) => d.name));
-  // corporatePartnershipFilter.init(data, 'categories.corporate_partnership');
-  // crossborderPartnershipsFilter.init(
-  //   data,
-  //   'categories.crossborder_partnerships'
-  // );
   systemNameFilter.init(
     data,
     'categories.system'
@@ -195,24 +177,6 @@ export const filterByCategory = (category, name) => {
     case 'use_case':
       useCaseFilter.click(name);
       break;
-    // case 'technology':
-    //   technologyFilter.click(name);
-    //   break;
-    // case 'architecture':
-    //   architectureFilter.click(name);
-    //   break;
-    // case 'infrastructure':
-    //   infrastructureFilter.click(name);
-    //   break;
-    // case 'access':
-    //   accessFilter.click(name);
-    //   break;
-    // case 'corporate_partnership':
-    //   corporatePartnershipFilter.click(name);
-    //   break;
-    // case 'crossborder_partnerships':
-    //   crossborderPartnershipsFilter.click(name);
-    //   break;
     case 'system':
       systemNameFilter.click(name);
       break;
@@ -253,12 +217,6 @@ export const resetAllFilters = () => {
   statusFilter.selectAll();
   countryFilter.selectAll();
   useCaseFilter.selectAll();
-  // technologyFilter.selectAll();
-  // architectureFilter.selectAll();
-  // infrastructureFilter.selectAll();
-  // accessFilter.selectAll();
-  // corporatePartnershipFilter.selectAll();
-  // crossborderPartnershipsFilter.selectAll();
   systemNameFilter.selectAll();
   incomeGroupFilter.selectAll();
   authenticationMethodFilter.selectAll();
@@ -277,12 +235,6 @@ export const anyFilterActive = derived(
     statusFilter,
     countryFilter,
     useCaseFilter,
-    // technologyFilter,
-    // architectureFilter,
-    // infrastructureFilter,
-    // accessFilter,
-    // corporatePartnershipFilter,
-    // crossborderPartnershipsFilter,
     systemNameFilter,
     incomeGroupFilter,
     authenticationMethodFilter,
@@ -299,12 +251,6 @@ export const anyFilterActive = derived(
     $statusFilter,
     $countryFilter,
     $useCaseFilter,
-    // $technologyFilter,
-    // $architectureFilter,
-    // $infrastructureFilter,
-    // $accessFilter,
-    // $corporatePartnershipFilter,
-    // $crossborderPartnershipsFilter,
     $systemNameFilter,
     $incomeGroupFilter,
     $authenticationMethodFilter,
@@ -322,13 +268,6 @@ export const anyFilterActive = derived(
       areAllSelected($statusFilter) &&
       areAllSelected($countryFilter) &&
       areAllSelected($useCaseFilter) &&
-      // areAllSelected($technologyFilter) &&
-      // areAllSelected($architectureFilter) &&
-      // areAllSelected($infrastructureFilter) &&
-      // areAllSelected($accessFilter) &&
-      // areAllSelected($corporatePartnershipFilter) &&
-      // areAllSelected($crossborderPartnershipsFilter)
-      // &&
       areAllSelected($systemNameFilter) &&
       areAllSelected($incomeGroupFilter) &&
       areAllSelected($authenticationMethodFilter) &&
@@ -352,17 +291,11 @@ export const anyFilterActive = derived(
 export const applyParams = (params) => {
   if (!params || Object.keys(params).length === 0) return;
 
-  const { status, useCase, architecture, infrastructure, access, country, corporatePartnership, crossborderPartnerships, system, income, authentication, medium, interoperability, protection, inclusion, controversies, technology, funding, international_partner } =
+  const { status, useCase, country, system, income, authentication, medium, interoperability, protection, inclusion, controversies, technology, funding, international_partner } =
     params;
 
   statusFilter.applyBoolArray(status);
   useCaseFilter.applyBoolArray(useCase);
-  // architectureFilter.applyBoolArray(architecture);
-  // infrastructureFilter.applyBoolArray(infrastructure);
-  // accessFilter.applyBoolArray(access);
-//  // corporatePartnershipFilter.applyBoolArray(corporatePartnership);
-//  // crossborderPartnershipsFilter.applyBoolArray(crossborderPartnerships);
-
   systemNameFilter.applyBoolArray(system);
   incomeGroupFilter.applyBoolArray(income);
   authenticationMethodFilter.applyBoolArray(authentication);

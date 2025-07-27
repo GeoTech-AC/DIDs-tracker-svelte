@@ -12,11 +12,6 @@
     countryFilter,
     statusFilter,
     useCaseFilter,
-    // architectureFilter,
-    // infrastructureFilter,
-    // accessFilter,
-    // corporatePartnershipFilter,
-    // crossborderPartnershipsFilter,
     systemNameFilter,
     incomeGroupFilter,
     authenticationMethodFilter,
@@ -36,18 +31,8 @@
   import {
     fullStatusRollup,
     fullUseCaseRollup,
-    // fullArchitectureRollup,
-    // fullInfrastructureRollup,
-    // fullAccessRollup,
     statusRollup,
     useCaseRollup,
-    // architectureRollup,
-    // infrastructureRollup,
-    // accessRollup,
-    // fullCorporatePartnershipRollup,
-    // fullCrossborderPartnershipsRollup,
-    // crossborderPartnershipsRollup,
-    // corporatePartnershipRollup,
     fullsystemNameRollup,
     fullincomeGroupRollup,
     fullauthenticationMethodRollup,
@@ -113,30 +98,6 @@
     //   info: $definitions.use_case
     // },
     // {
-    //   filter: architectureFilter,
-    //   label: $categoryNameScale.architecture,
-    //   shortCuts: [],
-    //   fullRollup: $fullArchitectureRollup,
-    //   rollup: $architectureRollup,
-    //   info: $definitions.architecture
-    // },
-    // {
-    //   filter: infrastructureFilter,
-    //   label: $categoryNameScale.infrastructure,
-    //   shortCuts: [],
-    //   fullRollup: $fullInfrastructureRollup,
-    //   rollup: $infrastructureRollup,
-    //   info: $definitions.infrastructure
-    // },
-    // {
-    //   filter: accessFilter,
-    //   label: $categoryNameScale.access,
-    //   shortCuts: [],
-    //   fullRollup: $fullAccessRollup,
-    //   rollup: $accessRollup,
-    //   info: $definitions.access
-    // },
-    // {
     //   filter: incomeGroupFilter,
     //   label: $categoryNameScale.income,
     //   shortCuts: [],
@@ -171,22 +132,6 @@
   ].map((d, i) => ({...d, id: i}));
 
   $: dropdownsBottomExtra = [
-    // {
-    //   filter: crossborderPartnershipsFilter,
-    //   label: $categoryNameScale.crossborder_partnerships,
-    //   shortCuts: [],
-    //   fullRollup: $fullCrossborderPartnershipsRollup,
-    //   rollup: $crossborderPartnershipsRollup,
-    //   info: $definitions.crossborder_projets
-    // },
-    // {
-    //   filter: corporatePartnershipFilter,
-    //   label: $categoryNameScale.corporate_partnership,
-    //   shortCuts: [],
-    //   fullRollup: $fullCorporatePartnershipRollup,
-    //   rollup: $corporatePartnershipRollup,
-    //   info: $definitions.technology_partnerships
-    // },
     {
       filter: incomeGroupFilter,
       label: $categoryNameScale.income,

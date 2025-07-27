@@ -4,10 +4,6 @@ import {
   statusFilter,
   useCaseFilter,
   countryFilter,
-  // architectureFilter,
-  // infrastructureFilter,
-  // accessFilter,
-  // technologyFilter,
   systemNameFilter,
   incomeGroupFilter,
   authenticationMethodFilter,
@@ -21,8 +17,7 @@ import {
 import { selectedId } from './selection';
 import { areAllSelected } from "../utils/logic";
 
-export const baseUrl = 'https://www.atlanticcouncil.org/didtracker';
-// export const baseUrl = 'https://geoecon.github.io/cbdc-tracker';
+export const baseUrl = 'https://www.atlanticcouncil.org/programs/geotech-center/';
 // export const baseUrl = 'http://localhost:5000';
 
 export const filtersToHex = (arr) => {
@@ -58,9 +53,6 @@ export const parseUrl = (urlParams) => {
     const [
       status,
       useCase,
-      // architecture,
-      // infrastructure,
-      // access,
       system, 
       income, 
       authentication, 
@@ -75,10 +67,6 @@ export const parseUrl = (urlParams) => {
       ...res,
       status: binaryToBool(hexToBinary(status)),
       useCase: binaryToBool(hexToBinary(useCase)),
-      // architecture: binaryToBool(hexToBinary(architecture)),
-      // infrastructure: binaryToBool(hexToBinary(infrastructure)),
-      // access: binaryToBool(hexToBinary(access)),
-      // system: binaryToBool(hexToBinary(system)),
       income: binaryToBool(hexToBinary(income)),
       authentication: binaryToBool(hexToBinary(authentication)),
       medium: binaryToBool(hexToBinary(medium)),
@@ -109,9 +97,6 @@ export const filterUrl = derived(
   [
     statusFilter,
     useCaseFilter,
-    // architectureFilter,
-    // infrastructureFilter,
-    // accessFilter,
     countryFilter,
     authenticationMethodFilter,
     idMediumFilter,
@@ -124,9 +109,6 @@ export const filterUrl = derived(
   ([
     $statusFilter,
     $useCaseFilter,
-    // $architectureFilter,
-    // $infrastructureFilter,
-    // $accessFilter,
     $countryFilter,
     incomeGroupFilter,
     authenticationMethodFilter,
@@ -139,8 +121,6 @@ export const filterUrl = derived(
     const params = filtersToHex([
       $statusFilter,
       $useCaseFilter,
-      // $architectureFilter,
-      // $infrastructureFilter,
       incomeGroupFilter,
       incomeGroupFilter,
       authenticationMethodFilter,

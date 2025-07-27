@@ -2,7 +2,7 @@
 
 > The Digital IDs Tracker of the Atlantic Council
 
-This is the official code for the [Digital IDs Tracker of the Atlantic Council](https://www.atlanticcouncil.org/blogs/econographics/the-rise-of-central-bank-digital-currencies/)..
+This is the official code for the [Digital IDs Tracker of the Atlantic Council](https://www.atlanticcouncil.org/programs/geotech-center/)..
 
 ![Screenshot of the DID Tracker](./public/img/screenshot.png)
 
@@ -52,5 +52,4 @@ You can run the newly built app with `npm run start`. This uses [sirv](https://g
 
 
 ## This Svelte app
-
 was initially created by Matthias Stahl, [higsch data & design](https://higsch.com).
