@@ -19,7 +19,7 @@
  function draw(ctx) {
   ctx.fillStyle = color ? color : fallbackFillColor;
   ctx.strokeStyle = mode === 'stroke' && color ? color : strokeColor;
-  ctx.lineWidth = mode === 'stroke' ? 5 : 2;   // <--- increased line widths
+  ctx.lineWidth = mode === 'stroke' ? 5 : 1;   // <--- reduced line widths
 
   const p = new Path2D(path);
   ctx.beginPath();
@@ -32,7 +32,7 @@
 
   if (mode === 'stroke') {
     ctx.strokeStyle = fallbackFillColor;
-    ctx.lineWidth = 5;  // <--- thicker fallback for regions
+    ctx.lineWidth = 2;  // <--- thinner fallback for regions
     ctx.stroke(p);
   }
 }

@@ -25,6 +25,7 @@
   export let showReset = false;
   export let hideColorBoxes = false;
   export let showClickHint = false;
+  export let showBarChart = true;
 
   let searchValue = '';
   let hoveredSuggestion = null;
@@ -162,11 +163,13 @@
       {/each}
     </ul>
   </div>
-  <BarChart
-    rollup={rollup}
-    fullRollup={fullRollup}
-    dummy={!rollup.length || !fullRollup.length}
-  />
+  {#if showBarChart}
+    <BarChart
+      rollup={rollup}
+      fullRollup={fullRollup}
+      dummy={!rollup.length || !fullRollup.length}
+    />
+  {/if}
   {#if (showSuggestions)}
     <div class="suggestions">
       <input
@@ -258,7 +261,6 @@
   }
 
   label button, .suggestions input {
-    /* background: linear-gradient(90deg, #80d0c7 0%, #0093e9 100%); */
     background: #82eeff;
     color: #fff;
     border-radius: 1em;
@@ -267,14 +269,12 @@
     transition: background 0.22s, color 0.12s;
   }
   label button:hover, .suggestions input:focus {
-    /* background: linear-gradient(90deg, #0093e9 0%, #80d0c7 100%); */
     background: #82eeff;
     color: #000;
   }
  
-  /* Style only the Reset button */
   button:has(span:first-child) {
-    background: #ffd34f;      /* Brighter yellow, or pick any strong color */
+    background: #ffd34f;
     border-radius: 1.4em;
     box-shadow: 0 1px 8px #ffd34f55;
     padding: 0.5em 1.2em;
@@ -283,13 +283,11 @@
     margin-left: 0.5em;
   }
 
-  /* Make the Reset label bold and black */
   button span:first-child {
     color: #000;
     font-weight: 700;
   }
 
-  /* Optional: On hover, even stronger background */
   button:has(span:first-child):hover {
     background: #ffba08;
     box-shadow: 0 2px 12px #ffba0855;
@@ -300,7 +298,6 @@
   width: 100%;
   min-height: var(--inputHeight);
   height: auto;
-  /* background: linear-gradient(90deg, #e3f2fd 0%, #f7faff 100%); */
   background: #e3f2fd;
   border-radius: 2em;
   box-shadow: 0 4px 16px 0 #b6e0fe33, 0 2px 8px #e3f2fd33;
@@ -316,14 +313,14 @@
   color: #196aa5;
   font-size: 1.1rem;
   letter-spacing: 0.01em;
-}
+ }
 
-.field:focus, .field:hover {
+ .field:focus, .field:hover {
   box-shadow:
     0 0 8px 2px #80d0c7cc,
     0 10px 32px 0 rgba(0,147,233,0.23),
     0 4px 24px #80d0c799;
-}
+ }
 
   .field span.click-hint {
     position: absolute;
@@ -348,7 +345,6 @@
   }
 
   ul.chips {
-    /* Make chips float elegantly over the fancy field */
     background: transparent !important;
     color: #fff;
   }
@@ -358,20 +354,22 @@
   position: absolute;
   z-index: 10000;
   width: 100%;
-  /* 50% transparent very light blue */
-  background: rgba(205, 245, 254, 0.9);  /* #e1f5fe at 50% */
+  max-width: 100%;
+  box-sizing: border-box;
+  background: rgba(205, 245, 254, 0.9);
   border-radius: 1.3em;
   box-shadow: 0 8px 32px 0 #b6e0fe33, 0 1.5px 7px #e3f2fd66;
   margin-top: 0.4em;
   padding: 1.1em 0.5em 0.6em 0.5em;
   color: #234;
   border: 1.5px solid #c4e0ec;
-  /* Remove or comment out previous background lines if present */
-  /* background: linear-gradient(120deg, #f7faff 70%, #e3f2fd 100%); */
-}
+ }
 
-/* The suggestions input bar (search box) */
-.suggestions input {
+ .suggestions input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: #fff;
   color: #196aa5;
   border: 2px solid #aee9f8;
@@ -382,20 +380,17 @@
   outline: none;
   font-weight: 500;
   box-shadow: 0 1px 6px 0 #c9e7fa44;
-}
+ }
 
-/* Suggestions list (ul) */
-.suggestions ul {
-  background: rgba(225, 245, 254, 0.9);  /* #e1f5fe at 90% */
-  /* background: transparent; */
+ .suggestions ul {
+  background: rgba(225, 245, 254, 0.9);
   border-radius: 1em;
   padding: 0;
   margin: 0;
   list-style: none;
-}
+ }
 
-/* Each suggestion item (li) - light background */
-.suggestions ul li {
+ .suggestions ul li {
   background: #39f5fc;
   padding: 0.55em 1.2em;
   margin: 0.17em 0;
@@ -405,44 +400,42 @@
   cursor: pointer;
   transition: background 0.17s, color 0.11s, box-shadow 0.14s;
   border: none;
-}
+ }
 
-.suggestions ul li:hover {
-  /* background: linear-gradient(90deg, #e3f2fd 0%, #b3e0ff 100%); */
+ .suggestions ul li:hover {
   background: #e3f2fd;
   color: #134166;
   box-shadow: 0 2px 12px 0 #aee9f855;
   font-weight: 600;
   transform: scale(1.035);
-}
+ }
 
-.suggestions ul li:active {
+ .suggestions ul li:active {
   background: #59e7fa;
   color: #196aa5;
   transform: scale(0.99);
-}
-.suggestions-list {
-  max-height: none;
-  overflow-y: visible;
+ }
+ .suggestions-list {
+  max-height: min(17em, calc(100vh - 260px));
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   list-style: none;
-}
+ }
 
-/* When there are more than 7, show scrollbar and limit height */
-.suggestions-list.scrollable {
-  max-height: 17em; /* Adjust as needed, roughly 7 items' height */
+ .suggestions-list.scrollable {
+  max-height: min(17em, calc(100vh - 260px));
   overflow-y: auto;
-}
+ }
 
-/* Optional: always show a nice custom scrollbar */
-.suggestions-list.scrollable::-webkit-scrollbar {
+ .suggestions-list.scrollable::-webkit-scrollbar {
   width: 0.6em;
   background: #e3f2fd;
   border-radius: 0.7em;
-}
-.suggestions-list.scrollable::-webkit-scrollbar-thumb {
+ }
+ .suggestions-list.scrollable::-webkit-scrollbar-thumb {
   background: #b6e0fe;
   border-radius: 0.7em;
-}
+ }
 </style>

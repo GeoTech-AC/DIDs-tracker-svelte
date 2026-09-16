@@ -12,6 +12,12 @@ const curate = (value) => {
   return value.replace('n/a', 'Undecided');
 };
 
+const curateYear = (value) => {
+  if (!value) return 'Undecided';
+  const trimmed = value.trim();
+  return /^\d{4}$/.test(trimmed) ? trimmed : 'Undecided';
+};
+
 export const loadTrackerData = async (dataPath) => {
   // load and format the data
   const data = await csv(dataPath, (d) => {
@@ -29,6 +35,8 @@ export const loadTrackerData = async (dataPath) => {
       overview_spotlight: d['Overview Spotlight'],
       key_developments: d['Key Developments'],
       key_developments_spotlight: d['Key Developments Spotlight'],
+      inclusion_accessibility_risk_details: d['Inclusion & Accessibility Risk Details'],
+      known_controversies_details: d['Known Controversies Details'],
       categories: {
         // former version
         new_status: curate(d['Present Status']),
@@ -41,8 +49,9 @@ export const loadTrackerData = async (dataPath) => {
         medium: curate(d['ID Medium']),
         interoperability: curate(d['Interoperatability']),
         protection: curate(d['Data Protection Framework']),
-        inclusion: curate(d['Inclusion and Accessibility Risk']), 
-        // controversies: curate(d['Known Controversies']),
+        inclusion: curate(d['Inclusion and Accessibility Risk']),
+        controversies: curate(d['Known Controversies']),
+        launch_year: curateYear(d['Launch Year']),
         // technology: curate(d['Technology Providers']),
         // funding: curate(d['Funding Source']),
         // international_partner: curate(d['Internation Partners']),

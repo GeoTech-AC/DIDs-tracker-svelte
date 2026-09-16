@@ -274,10 +274,22 @@ export const controversiesLevels = [
   },
   {
     id: 5,
-    name: 'None',
+    name: 'Multiple',
   },
   {
     id: 6,
+    name: 'Low adoption',
+  },
+  {
+    id: 7,
+    name: 'Malfunction',
+  },
+  {
+    id: 8,
+    name: 'None',
+  },
+  {
+    id: 9,
     name: 'Undecided',
   }
 ];
@@ -312,6 +324,10 @@ export const fundersLevels = [
 ];
 
 
-
-
-
+export const getLaunchYearLevels = (data) => {
+  const years = [...new Set(data.map(d => d.categories.launch_year))]
+    .filter(y => y !== 'Undecided')
+    .sort();
+  const all = [...years, 'Undecided'];
+  return all.map((name, id) => ({ id, name }));
+};

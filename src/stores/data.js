@@ -5,7 +5,6 @@ import { loadTrackerData } from '../utils/load';
 import {
   statusFilter,
   countryFilter,
-  useCaseFilter,
   systemNameFilter,
   incomeGroupFilter,
   authenticationMethodFilter,
@@ -13,25 +12,22 @@ import {
   interoperabilityFilter,
   dataProtectionFilter,
   inclusionFilter,
-  // controversiesFilter,
-  // technologyPartnerFilter,
-  // fundingSourceFilter,
-  // internationalpartnerFilter
+  controversiesFilter,
+  launchYearFilter,
 } from './filter';
 import { hasOverlap } from '../utils/logic';
 import {
   categoryNameScale,
   statusColorScale,
   countryColorScale,
-  useCaseColorScale,
   incomeColorScale,
   authenticationColorScale,
   mediumColorScale,
   interoperabilityColorScale,
   protectionColorScale,
   inclusionColorScale,
-  // controversiesColorScale,
-  // fundersColorScale,
+  controversiesColorScale,
+  launchYearColorScale,
 } from '../stores/scales';
 import styles from '../utils/styles';
 
@@ -57,30 +53,28 @@ export const scaledData = derived(
     categoryNameScale,
     statusColorScale,
     countryColorScale,
-    useCaseColorScale,
     incomeColorScale,
     authenticationColorScale,
     mediumColorScale,
     interoperabilityColorScale,
     protectionColorScale,
     inclusionColorScale,
-    // controversiesColorScale,
-    // fundersColorScale,
+    controversiesColorScale,
+    launchYearColorScale,
     ],
   ([
     $rawData,
     $categoryNameScale,
     $statusColorScale,
     $countryColorScale,
-    $useCaseColorScale,
     $incomeColorScale,
     $authenticationColorScale,
     $mediumColorScale,
     $interoperabilityColorScale,
     $protectionColorScale,
     $inclusionColorScale,
-    // $controversiesColorScale,
-    // $fundersColorScale,
+    $controversiesColorScale,
+    $launchYearColorScale,
     ]) => {
     return $rawData.map((d) => {
       return {
@@ -93,40 +87,22 @@ export const scaledData = derived(
         },
         categories: {
           ...d.categories,
-          new_status: {
-            name: d.categories.new_status,
-            title: $categoryNameScale.new_status,
-            color: $statusColorScale[d.categories.new_status],
-            filterable: true
-          },
-          use_case: {
-            name: d.categories.use_case,
-            title: $categoryNameScale.use_case,
-            color: $useCaseColorScale[d.categories.use_case],
-            filterable: true
-          },
-          // corporate_partnership: {
-          //   name: d.categories.corporate_partnership,
-          //   title: $categoryNameScale.corporate_partnership,
-          //   color: styles.gray,
-          //   filterable: false
-          // },
-          // crossborder_partnerships: {
-          //   name: d.categories.crossborder_partnerships,
-          //   title: $categoryNameScale.crossborder_partnerships,
-          //   color: styles.gray,
-          //   filterable: false
-          // },
           system: {
             name: d.categories.system,
             title: $categoryNameScale.system,
             color: styles.gray,
             filterable: false
           },
-          income: {
-            name: d.categories.income,
-            title: $categoryNameScale.income,
-            color: $incomeColorScale[d.categories.income],
+          launch_year: {
+            name: d.categories.launch_year,
+            title: $categoryNameScale.launch_year,
+            color: $launchYearColorScale[d.categories.launch_year],
+            filterable: true
+          },
+          new_status: {
+            name: d.categories.new_status,
+            title: $categoryNameScale.new_status,
+            color: $statusColorScale[d.categories.new_status],
             filterable: true
           },
           authentication: {
@@ -141,10 +117,10 @@ export const scaledData = derived(
             color: $mediumColorScale[d.categories.medium],
             filterable: true
           },
-          interoperability: {
-            name: d.categories.interoperability,
-            title: $categoryNameScale.interoperability,
-            color: $interoperabilityColorScale[d.categories.interoperability],
+          income: {
+            name: d.categories.income,
+            title: $categoryNameScale.income,
+            color: $incomeColorScale[d.categories.income],
             filterable: true
           },
           protection: {
@@ -153,36 +129,24 @@ export const scaledData = derived(
             color: $protectionColorScale[d.categories.protection],
             filterable: true
           },
+          interoperability: {
+            name: d.categories.interoperability,
+            title: $categoryNameScale.interoperability,
+            color: $interoperabilityColorScale[d.categories.interoperability],
+            filterable: true
+          },
           inclusion: {
             name: d.categories.inclusion,
             title: $categoryNameScale.inclusion,
             color: $inclusionColorScale[d.categories.inclusion],
             filterable: true
           },
-          // controversies: {
-          //   name: d.categories.controversies,
-          //   title: $categoryNameScale.controversies,
-          //   color: $controversiesColorScale[d.categories.controversies],
-          //   filterable: true
-          // },
-          // technology: {
-          //   name: d.categories.technology,
-          //   title: $categoryNameScale.technology,
-          //   color: styles.gray,
-          //   filterable: true
-          // },
-          // funding: {
-          //   name: d.categories.funding,
-          //   title: $categoryNameScale.funding,
-          //   color: $fundingColorScale[d.categories.funding],
-          //   filterable: true
-          // },
-          // international_partner: {
-          //   name: d.categories.international_partner,
-          //   title: $categoryNameScale.international_partner,
-          //   color: styles.gray,
-          //   filterable: true
-          // }
+          controversies: {
+            name: d.categories.controversies,
+            title: $categoryNameScale.controversies,
+            color: $controversiesColorScale[d.categories.controversies],
+            filterable: true
+          },
         }
       };
     });
@@ -193,7 +157,6 @@ export const data = derived(
     scaledData,
     statusFilter,
     countryFilter,
-    useCaseFilter,
     systemNameFilter,
     incomeGroupFilter,
     authenticationMethodFilter,
@@ -201,16 +164,13 @@ export const data = derived(
     interoperabilityFilter,
     dataProtectionFilter,
     inclusionFilter,
-    // controversiesFilter,
-    // technologyPartnerFilter,
-    // fundingSourceFilter,
-    // internationalpartnerFilter,
+    controversiesFilter,
+    launchYearFilter,
     ],
   ([
     $scaledData,
     $statusFilter,
     $countryFilter,
-    $useCaseFilter,
     $systemNameFilter,
     $incomeGroupFilter,
     $authenticationMethodFilter,
@@ -218,10 +178,8 @@ export const data = derived(
     $interoperabilityFilter,
     $dataProtectionFilter,
     $inclusionFilter,
-    // $controversiesFilter,
-    // $technologyPartnerFilter,
-    // $fundingSourceFilter,
-    // $internationalpartnerFilter,
+    $controversiesFilter,
+    $launchYearFilter,
     ]) => {
     return $scaledData.map((d) => {
       return {
@@ -229,19 +187,15 @@ export const data = derived(
         show:
           hasOverlap([d.categories.new_status.name], $statusFilter) &&
           hasOverlap([d.name.name], $countryFilter) &&
-          hasOverlap([d.categories.use_case.name], $useCaseFilter) &&
           hasOverlap([d.categories.system.name], $systemNameFilter) &&
           hasOverlap([d.categories.income.name], $incomeGroupFilter)  &&
           hasOverlap([d.categories.authentication.name], $authenticationMethodFilter) &&
           hasOverlap([d.categories.medium.name], $idMediumFilter) &&
           hasOverlap([d.categories.interoperability.name],  $interoperabilityFilter)  &&
           hasOverlap([d.categories.protection.name], $dataProtectionFilter) &&
-          hasOverlap([d.categories.inclusion.name], $inclusionFilter) 
-          // &&
-          // hasOverlap([d.categories.controversies.name], $controversies) &&
-          // hasOverlap([d.categories.technology.name], $technologyPartnerFilter) &&
-          // hasOverlap([d.categories.funding.name], $fundingSourceFilter) &&
-          // hasOverlap([d.categories.international_partner.name],$internationalpartnerFilter),
+          hasOverlap([d.categories.inclusion.name], $inclusionFilter) &&
+          hasOverlap([d.categories.controversies.name], $controversiesFilter) &&
+          hasOverlap([d.categories.launch_year.name], $launchYearFilter)
       };
     });
   },

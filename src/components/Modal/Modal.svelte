@@ -43,13 +43,25 @@
     close();
   }
 
-  $: categories = orderBy(Object.keys(datum.categories).map(key => {
-    return {
+  const categoryOrder = [
+    'system',
+    'launch_year',
+    'new_status',
+    'authentication',
+    'medium',
+    'income',
+    'protection',
+    'interoperability',
+    'inclusion',
+    'controversies'
+  ];
+
+  $: categories = categoryOrder
+    .map((key) => ({
       category: key,
       ...datum.categories[key]
-    };
-  }),
-  'filterable', 'desc');
+    }))
+    .filter((cat) => cat.title && cat.name);
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
@@ -103,7 +115,7 @@
           {#each categories as cat (cat.title)}
             <div
               class="category"
-              use:css={{chipColor: cat.color}}
+              use:css={{chipColor: datum.categories.new_status.color}}
             >
               <h3>{cat.title}</h3>
               {#if (cat.filterable)}
@@ -124,12 +136,23 @@
       <main>
         <h2>Key developments</h2>
         <p>{@html datum.key_developments.replace(/\n/g, '<br>')}</p>
+        {#if (datum.inclusion_accessibility_risk_details)}
+          <h4>Inclusion & Accessibility Risks</h4>
+          <div class="details-section">
+            <p>{@html datum.inclusion_accessibility_risk_details.replace(/\n/g, '<br>')}</p>
+          </div>
+        {/if}
+        {#if (datum.known_controversies_details)}
+          <h4>Known Controversies</h4>
+          <div class="details-section">
+            <p>{@html datum.known_controversies_details.replace(/\n/g, '<br>')}</p>
+          </div>
+        {/if}
         <h4>Sources</h4>
         <div class="sources">
           {#if (datum.sources.managing_authority_name)}
             <a href={datum.sources.managing_authority_url} target="_blank">{datum.sources.managing_authority_name}</a>
           {/if}
-          <p>Atlantic Council Research</p>
           {#if (datum.sources.media_urls.length)}
             <ul class="media-sources">
               {#each datum.sources.media_urls as url}
@@ -137,6 +160,7 @@
               {/each}
             </ul>
           {/if}
+          <p>Atlantic Council Research</p>
         </div>
         <h4>Share</h4>
         <div class="share-panel">
@@ -405,6 +429,17 @@ main h4 {
   margin: 1.7rem 0 0.7rem 0;
   color: #156385;
   font-size: 1.09rem;
+}
+
+.details-section {
+  margin: 0.7em 0 1.2em 0;
+}
+
+.details-section p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.3;
+  color: #3d4852;
 }
 
 .sources {

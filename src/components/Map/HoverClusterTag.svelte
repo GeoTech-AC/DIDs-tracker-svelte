@@ -16,7 +16,7 @@
   const dispatch = createEventDispatcher();
 
   const labelArrowWidth = 30;
-  const pathGrowDuration = 200;
+  const pathGrowDuration = 300;
   const cornerRadius = 5;
   const offset = 20;
 
@@ -93,7 +93,7 @@
   });
 </script>
 
-<g class="shadow-hover-tag">
+<g class="shadow-hover-tag" visibility="hidden" aria-hidden="true" pointer-events="none">
   {#each tagsPaths as tag, i (tag.id)}
     <text
       class="tag-text-category"
@@ -138,6 +138,7 @@
         class="tag-label-path background"
         class:country={tag.category === 'country'}
         d={tagLabelPath(tag.x2, tag.y2, tag.x3, tag.y3, tag.x4, tag.y4, tag.x5, tag.y5, tag.x6, tag.y6, tag.direction * cornerRadius)}
+        fill={data.color}
       />
       <path
         class="tag-label-path"
@@ -226,7 +227,12 @@ g.tag-label {
 .tag-label-path.background {
   stroke: #e0f7fa;
   stroke-width: 7;
-  fill: none;
+}
+
+/* To remove text in top left corner */
+.shadow-hover-tag {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Tag Glassy Gradient Fill */

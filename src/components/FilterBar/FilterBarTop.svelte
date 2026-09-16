@@ -19,10 +19,8 @@
     interoperabilityFilter,
     dataProtectionFilter,
     inclusionFilter,
-    // controversiesFilter,
-    // technologyPartnerFilter,
-    // fundingSourceFilter,
-    // internationalpartnerFilter
+    controversiesFilter,
+    launchYearFilter,
    } 
    
    
@@ -40,10 +38,8 @@
     fullinteroperabilityRollup,
     fulldataProtectionRollup,
     fullinclusionRollup,
-    // fullcontroversiesRollup,
-    // fulltechnologyPartnerRollup,
-    // fullfundingSourceRollup,
-    // fullinternationalpartnerRollup,
+    fullcontroversiesRollup,
+    fulllaunchYearRollup,
     systemNameRollup,
     incomeGroupRollup,
     authenticationMethodRollup,
@@ -51,10 +47,8 @@
     interoperabilityRollup,
     dataProtectionRollup,
     inclusionRollup,
-    // controversiesRollup,
-    // technologyPartnerRollup,
-    // fundingSourceRollup,
-    // internationalpartnerRollup
+    controversiesRollup,
+    launchYearRollup,
   } from '../../stores/aggregation';
   import { categoryNameScale } from '../../stores/scales';
   import { isVertical } from '../../stores/device';
@@ -76,7 +70,8 @@
       shortCuts: countryGroups,
       fullRollup: [],
       rollup: [],
-      info: null
+      info: null,
+      showBarChart: true
     },
     {
       filter: statusFilter,
@@ -84,7 +79,8 @@
       shortCuts: [],
       fullRollup: $fullStatusRollup,
       rollup: $statusRollup,
-      info: $definitions.status
+      info: $definitions.status,
+      showBarChart: true
     }
   ].map((d, i) => ({...d, id: i}));
 
@@ -95,7 +91,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullUseCaseRollup,
     //   rollup: $useCaseRollup,
-    //   info: $definitions.use_case
+    //   info: $definitions.use_case,
+    //   showBarChart: false
     // },
     // {
     //   filter: incomeGroupFilter,
@@ -103,7 +100,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullincomeGroupRollup,
     //   rollup: $incomeGroupRollup,
-    //   info: $definitions.income_group
+    //   info: $definitions.income_group,
+    //   showBarChart: false
     // },
     // {
     //   filter: authenticationMethodFilter,
@@ -111,7 +109,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullauthenticationMethodRollup,
     //   rollup: $authenticationMethodRollup,
-    //   info: $definitions.authentication_method
+    //   info: $definitions.authentication_method,
+    //   showBarChart: false
     // },
     // {
     //   filter: idMediumFilter,
@@ -119,7 +118,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullidMediumRollup,
     //   rollup: $idMediumRollup,
-    //   info: $definitions.id_medium
+    //   info: $definitions.id_medium,
+    //   showBarChart: false
     // },
     // {
     //   filter: interoperabilityFilter,
@@ -127,7 +127,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullinteroperabilityRollup,
     //   rollup: $interoperabilityRollup,
-    //   info: $definitions.interoperability
+    //   info: $definitions.interoperability,
+    //   showBarChart: false
     // },
   ].map((d, i) => ({...d, id: i}));
 
@@ -138,7 +139,8 @@
       shortCuts: [],
       fullRollup: $fullincomeGroupRollup,
       rollup: $incomeGroupRollup,
-      info: $definitions.income_group
+      info: $definitions.income_group,
+      showBarChart: false
     },
     {
       filter: authenticationMethodFilter,
@@ -146,7 +148,8 @@
       shortCuts: [],
       fullRollup: $fullauthenticationMethodRollup,
       rollup: $authenticationMethodRollup,
-      info: $definitions.authentication_method
+      info: $definitions.authentication_method,
+      showBarChart: false
     },
     {
       filter: idMediumFilter,
@@ -154,7 +157,8 @@
       shortCuts: [],
       fullRollup: $fullidMediumRollup,
       rollup: $idMediumRollup,
-      info: $definitions.id_medium
+      info: $definitions.id_medium,
+      showBarChart: false
     },
     {
       filter: interoperabilityFilter,
@@ -162,7 +166,8 @@
       shortCuts: [],
       fullRollup: $fullinteroperabilityRollup,
       rollup: $interoperabilityRollup,
-      info: $definitions.interoperability
+      info: $definitions.interoperability,
+      showBarChart: false
     },
     {
       filter: systemNameFilter,
@@ -170,7 +175,8 @@
       shortCuts: [],
       fullRollup: $fullsystemNameRollup,
       rollup: $systemNameRollup,
-      info: $definitions.system_name
+      info: $definitions.system_name,
+      showBarChart: false
     },
     // {
     //   filter: incomeGroupFilter,
@@ -178,7 +184,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullincomeGroupRollup,
     //   rollup: $incomeGroupRollup,
-    //   info: $definitions.income_group
+    //   info: $definitions.income_group,
+    //   showBarChart: false
     // },
     {
       filter: dataProtectionFilter,
@@ -186,7 +193,8 @@
       shortCuts: [],
       fullRollup: $fulldataProtectionRollup,
       rollup: $dataProtectionRollup,
-      info: $definitions.data_protection
+      info: $definitions.data_protection,
+      showBarChart: false
     },
     {
       filter: inclusionFilter,
@@ -194,23 +202,35 @@
       shortCuts: [],
       fullRollup: $fullinclusionRollup,
       rollup: $inclusionRollup,
-      info: $definitions.inclusion_risk
+      info: $definitions.inclusion_risk,
+      showBarChart: false
     },
-    // {
-    //   filter: controversiesFilter,
-    //   label: $categoryNameScale.controversies,
-    //   shortCuts: [],
-    //   fullRollup: $fullcontroversiesRollup,
-    //   rollup: $controversiesRollup,
-    //   info: $definitions.controversies
-    // },
+    {
+      filter: controversiesFilter,
+      label: $categoryNameScale.controversies,
+      shortCuts: [],
+      fullRollup: $fullcontroversiesRollup,
+      rollup: $controversiesRollup,
+      info: $definitions.controversies,
+      showBarChart: false
+    },
+    {
+      filter: launchYearFilter,
+      label: $categoryNameScale.launch_year,
+      shortCuts: [],
+      fullRollup: $fulllaunchYearRollup,
+      rollup: $launchYearRollup,
+      info: null,
+      showBarChart: false
+    },
     // {
     //   filter: technologyPartnerFilter,
     //   label: $categoryNameScale.technology,
     //   shortCuts: [],
     //   fullRollup: $fulltechnologyPartnerRollup,
     //   rollup: $technologyPartnerRollup,
-    //   info: $definitions.technology
+    //   info: $definitions.technology,
+    //   showBarChart: false
     // },
     // {
     //   filter: fundingSourceFilter,
@@ -218,7 +238,8 @@
     //   shortCuts: [],
     //   fullRollup: $fullfundingSourceRollup,
     //   rollup: $fundingSourceRollup,
-    //   info: $definitions.funding_source
+    //   info: $definitions.funding_source,
+    //   showBarChart: false
     // },
     // {
     //   filter: internationalpartnerFilter,
@@ -226,10 +247,10 @@
     //   shortCuts: [],
     //   fullRollup: $fullinternationalpartnerRollup,
     //   rollup: $internationalpartnerRollup,
-    //   info: $definitions.international_partners
+    //   info: $definitions.international_partners,
+    //   showBarChart: false
     // }
   ].map((d, i) => ({...d, id: i}));
-
 
   $: maxColumns = Math.max(dropdownsTop.length, 4);
 </script>
@@ -240,7 +261,7 @@
 >
   <FilterTitle label="Filters" />
   <div class="standard grid-container">
-    {#each dropdownsTop as { id, filter, label, fullRollup, rollup, info, shortCuts } (id)}
+    {#each dropdownsTop as { id, filter, label, fullRollup, rollup, info, shortCuts, showBarChart } (id)}
       <Dropdown
         filter={filter}
         label={label}
@@ -251,6 +272,7 @@
         tooltip={tooltip}
         showReset
         showClickHint={`${$isVertical ? 'Tap' : 'Click'} to filter`}
+        showBarChart={showBarChart}
       />
     {/each}
     <div class="share-panel"></div>
@@ -259,32 +281,19 @@
     </div>
   </div>
 
-  <div class="extra grid-container" transition:slide>
-    {#each dropdownsBottom as { id, filter, label, fullRollup, rollup, info } (id)}
-      <Dropdown
-        filter={filter}
-        label={label}
-        fullRollup={fullRollup}
-        rollup={rollup}
-        info={info}
-        tooltip={tooltip}
-        showReset
-        showClickHint={`${$isVertical ? 'Tap' : 'Click'} to filter`}
-      />
-    {/each}
+  <div class="more-filters-wrapper">
+    <FilterTitle
+      label="More filters"
+      expandable
+      bind:expanded={extraFiltersGeoExpanded}
+    />
   </div>
-
-  <FilterTitle
-  label="More filters"
-  expandable
-  bind:expanded={extraFiltersGeoExpanded}
-/>
 
   {#if extraFiltersGeoExpanded}
   <div transition:slide>
     <div transition:fade>
       <div class="extra grid-container">
-        {#each dropdownsBottomExtra as { id, filter, label, fullRollup, rollup, info } (id)}
+        {#each dropdownsBottomExtra as { id, filter, label, fullRollup, rollup, info, showBarChart } (id)}
           <Dropdown
             filter={filter}
             label={label}
@@ -294,6 +303,7 @@
             tooltip={tooltip}
             showReset
             showClickHint={`${$isVertical ? 'Tap' : 'Click'} to filter`}
+            showBarChart={showBarChart}
           />
         {/each}
       </div>
@@ -305,12 +315,12 @@
 <style>
  .filter-bar-top {
   width: 100%;
-  padding: 2.1rem 0 1.3rem 0;
+  padding: 0.5rem 0 0.5rem 0;
   /* background: linear-gradient(90deg, #f7faff 0%, #c9e7fa 50%, #aee9f8 100%); */
   background: #c9e7fa;
-  border-radius: 2.7em;
+  border-radius: 0;
   box-shadow: 0 8px 32px 0 rgba(80,200,250,0.10), 0 2px 16px #c9e7fa44;
-  margin: 1.3em 0 2.5em 0;
+  margin: 0.3em 0 0.5em 0;
   transition: background 0.25s;
   position: relative;
 }
@@ -321,14 +331,25 @@
   padding: 0.7rem 2.2rem;
   grid-template-columns: repeat(1, 1fr);
   column-gap: 1.1rem;
-  row-gap: 1.1rem;
+  row-gap: 0.3rem;
   align-items: stretch;
   justify-items: stretch;
   justify-content: end;
 }
 
 .grid-container.standard {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+ }
+
+.grid-container.standard > * {
+  min-width: 0;
+}
+
+.more-filters-wrapper {
+  padding: 0 2.2rem;
+  margin-top: 0;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .share-panel, .logo {
@@ -367,13 +388,16 @@
 
 @media (max-width: 900px) {
   .filter-bar-top {
-    border-radius: 1.4em;
-    padding: 1.1rem 0 1rem 0;
+    border-radius: 0;
+    padding: 0.4rem 0 0.4rem 0;
   }
   .grid-container {
     padding: 0.6rem 0.4rem;
     column-gap: 0.7rem;
-    row-gap: 0.7rem;
+    row-gap: 0.3rem;
+  }
+  .more-filters-wrapper {
+    padding: 0 0.4rem;
   }
 }
 
@@ -393,7 +417,7 @@
   cursor: pointer;
   letter-spacing: 0.07em;
   outline: none;
-  margin: 1.2em 0 1.8em 0;
+  margin: 0;
   position: relative;
   overflow: hidden;
   transition:

@@ -17,7 +17,7 @@
   const dispatch = createEventDispatcher();
 
   const labelArrowWidth = 30;
-  const pathGrowDuration = 200;
+  const pathGrowDuration = 300;
   const cornerRadius = 5;
   const offset = 20;
 
@@ -63,6 +63,7 @@
       }
     },
     ...Object.keys(data.categories)
+    .filter(key => ['system', 'income', 'launch_year'].includes(key))
     .map(key => {
       return {
         category: key,
@@ -132,7 +133,7 @@
   
 </script>
 
-<g class="shadow-hover-tag">
+<g class="shadow-hover-tag" visibility="hidden" aria-hidden="true" pointer-events="none">
   {#each tagsPaths as tag, i (tag.id)}
     <text
       class="tag-text-category"
@@ -210,11 +211,11 @@
         dy={tag.textNameYOffset}
         fill={data.categories.new_status.color} 
       >
-        {tag.category === 'new_status' ? getDisplayStatus(tag.name) : tag.name}
-      </text>
-      </g>
-    </g>
-  {/each}
+         {tag.category === 'new_status' ? getDisplayStatus(tag.name) : tag.name}
+       </text>
+        </g>
+     </g>
+   {/each}
 </g>
 <Centroid
   dataCountry={data}
@@ -268,6 +269,12 @@ g.tag-label {
   stroke: #e0f7fa;
   stroke-width: 7;
   fill: none;
+}
+
+/* To remove text in the top left corner */
+.shadow-hover-tag {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Text styling */

@@ -27,6 +27,11 @@ Then start [Rollup](https://rollupjs.org):
 ```bash
 npm run dev
 ```
+If you receive an error that the file cannot be loaded because running scripts is disabled on this system
+```bash
+powershell -ex bypass
+```
+And then run `npm run dev` again.
 
 Navigate to [localhost:5000](http://localhost:5000). You should see your app running.
 

@@ -11,7 +11,8 @@ import {
   interoperabilityFilter,
   dataProtectionFilter,
   inclusionFilter,
-  // controversiesFilter,
+  controversiesFilter,
+  launchYearFilter,
   // technologyPartnerFilter,
   // fundingSourceFilter,
   // internationalpartnerFilter
@@ -40,21 +41,24 @@ export const categoryNameScale = writable({
   interoperability:   'Interoperatibility',
   protection:    'Data Protection Frameworks',
   inclusion:   'Inclusion Risk',
-  // controversies:    'Known Controversies',
+  controversies:    'Known Controversies',
+  launch_year:      'Launch Year',
   // technology:   'Technology Vendor',
   // funding:   'Funding Source',
   // international_partner:  'Internation Partner',
 });
 
+const statusColorAssignments = {
+  Launched: statusColors[4],
+  Pilot: statusColors[3],
+  Development: statusColors[2],
+  Research: statusColors[0],
+  Inactive: statusColors[1],
+  Canceled: statusColors[5],
+  Other: statusColors[6]
+};
 
-export const statusColorScale = writable(
-  (function () {
-    return statusLevels.reduce(
-      (acc, cur, i) => ({ ...acc, [cur.name]: statusColors[i] }),
-      {}
-    );
-  })()
-);
+export const statusColorScale = writable(statusColorAssignments);
 
 export const countryColorScale = derived(countryFilter, $countryFilter => {
   return generateHarmonicColorScale($countryFilter.map(d => d.name));
@@ -92,9 +96,13 @@ export const inclusionColorScale = derived(inclusionFilter, $inclusionFilter => 
   return generateHarmonicColorScale($inclusionFilter.map(d => d.name));
 });
 
-// export const controversiesColorScale = derived(controversiesFilter, $controversiesFilter => {
-//   return generateHarmonicColorScale($controversiesFilter.map(d => d.name));
-// });
+export const controversiesColorScale = derived(controversiesFilter, $controversiesFilter => {
+  return generateHarmonicColorScale($controversiesFilter.map(d => d.name));
+});
+
+export const launchYearColorScale = derived(launchYearFilter, $launchYearFilter => {
+  return generateHarmonicColorScale($launchYearFilter.map(d => d.name));
+});
 
 // export const technologyPartnerColorScale = derived(technologyPartnerFilter, $technologyPartnerFilter => {
 //   return generateHarmonicColorScale($technologyPartnerFilter.map(d => d.name));
@@ -107,5 +115,3 @@ export const inclusionColorScale = derived(inclusionFilter, $inclusionFilter => 
 // export const internationalpartnerColorScale = derived(internationalpartnerFilter, $internationalpartnerFilter => {
 //   return generateHarmonicColorScale($internationalpartnerFilter.map(d => d.name));
 // });
-
-

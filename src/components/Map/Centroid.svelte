@@ -6,7 +6,7 @@
 
   export let dataCountry = {};
   export let color = '#000000';
-  export let radius = 14;
+  export let radius = 10;
   export let opacity = 1.0;
   export let offset = [0, 0];
   export let isCluster = false;
