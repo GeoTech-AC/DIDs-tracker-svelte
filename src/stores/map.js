@@ -32,6 +32,17 @@ const features = readable([], async (set) => {
 
   const countries = [...worldFeatures, ...specialFeatures]
     .map((d) => {
+      if (d.properties.name === 'United Republic of Tanzania') {
+        return {
+          ...d,
+          properties: {
+            ...d.properties,
+            name: 'Tanzania',
+          },
+          status: 'country',
+        };
+      }
+
       return {
         ...d,
         status: 'country',
