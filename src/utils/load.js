@@ -76,7 +76,9 @@ export const loadTrackerData = async (dataPath) => {
       (d) => d.categories.new_status !== 'Undecided'
     )
     .filter(
-      (d) => d.categories.new_status !== 'No development yet'
+      (d) =>
+        d.categories.new_status !== 'No development yet' ||
+        d.name === 'United Kingdom'
     );
 
   // initialize the filters
